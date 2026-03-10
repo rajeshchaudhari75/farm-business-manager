@@ -459,7 +459,31 @@ tbody td { padding: 11px 14px; font-size: 13px; color: var(--text); }
 .amount-earn { font-family: 'JetBrains Mono', monospace; color: var(--green); }
 .amount-mono { font-family: 'JetBrains Mono', monospace; }
 
-/* ── Trend line (SVG sparkline) ──────────────────── */
+/* ── Total row ───────────────────────────────────── */
+.total-row td {
+  padding: 10px 14px;
+  border-top: 2px solid var(--border);
+  background: var(--surface);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 700;
+  position: sticky;
+  bottom: 0;
+  z-index: 2;
+}
+.total-row .total-label {
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 10px;
+}
+.total-row .total-amount-exp { color: var(--red); font-size: 14px; }
+.total-row .total-amount-earn { color: var(--green); font-size: 14px; }
+.total-row .total-sel-badge {
+  display: inline-block; font-size: 9px; padding: 2px 7px;
+  background: rgba(253,188,180,0.12); border: 1px solid rgba(253,188,180,0.3);
+  border-radius: 10px; color: var(--accent); margin-left: 8px; vertical-align: middle;
+}
 .sparkline-wrap { padding: 4px 0 0; }
 svg.sparkline { overflow: visible; }
 
@@ -2106,11 +2130,14 @@ function renderExpenses() {
     else { if(icon) icon.textContent='↕'; }
   });
 
-  document.getElementById('exp-count').textContent=`${rows.length} entr${rows.length===1?'y':'ies'} · ${fmt(rows.reduce((s,e)=>s+e.amount,0))}`;
+  const expTotal = rows.reduce((s,e)=>s+e.amount,0);
+  document.getElementById('exp-count').textContent=`${rows.length} entr${rows.length===1?'y':'ies'} · ${fmt(expTotal)}`;
   const tbody=document.getElementById('exp-tbody');
   if(!rows.length){ tbody.innerHTML='<tr><td colspan="9" class="empty">No expenses match filters.</td></tr>'; return; }
 
-  tbody.innerHTML=rows.map(e=>`<tr id="exp-row-${e.id}" class="${selectedIds.has(e.id)?'row-selected':''}">
+  const cols = isReadOnly() ? 9 : 10;
+  const amtColIdx = isReadOnly() ? 6 : 7; // 0-based index of amount col
+  tbody.innerHTML = rows.map(e=>`<tr id="exp-row-${e.id}" class="${selectedIds.has(e.id)?'row-selected':''}">
     ${isReadOnly() ? '' : `<td class="cb-col"><input type="checkbox" class="row-cb" data-id="${e.id}" data-table="exp" onchange="onRowCheck(this)" ${selectedIds.has(e.id)?'checked':''}></td>`}
     <td class="amount-mono" style="color:var(--muted);font-size:11px">${e.date}</td>
     <td>${e.desc}</td>
@@ -2121,7 +2148,11 @@ function renderExpenses() {
     <td class="amount-exp">-${fmt(e.amount)}</td>
     <td style="color:var(--muted);font-size:11px;max-width:140px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis" title="${e.notes||''}">${e.notes||'—'}</td>
     ${isReadOnly() ? '' : `<td><div class="action-btns"><button class="btn btn-edit btn-sm" onclick="openEditModal(${e.id})">✏️</button><button class="btn btn-danger btn-sm" onclick="deleteEntry(${e.id})">✕</button></div></td>`}
-  </tr>`).join('');
+  </tr>`).join('') + `<tr class="total-row" id="exp-total-row">
+    <td colspan="${amtColIdx}" class="total-label">TOTAL <span id="exp-total-sel-badge" class="total-sel-badge" style="display:none"></span></td>
+    <td class="total-amount-exp" id="exp-total-amt">-${fmt(expTotal)}</td>
+    <td colspan="${cols - amtColIdx - 1}"></td>
+  </tr>`;
 }
 
 /* ─── EARNINGS ───────────────────────────────────── */
@@ -2191,11 +2222,14 @@ function renderEarnings() {
     else { if(icon) icon.textContent='↕'; }
   });
 
-  document.getElementById('earn-count').textContent=`${rows.length} entr${rows.length===1?'y':'ies'} · ${fmt(rows.reduce((s,e)=>s+e.amount,0))}`;
+  const earnTotal = rows.reduce((s,e)=>s+e.amount,0);
+  document.getElementById('earn-count').textContent=`${rows.length} entr${rows.length===1?'y':'ies'} · ${fmt(earnTotal)}`;
   const tbody=document.getElementById('earn-tbody');
   if(!rows.length){ tbody.innerHTML='<tr><td colspan="9" class="empty">No earnings match filters.</td></tr>'; return; }
 
-  tbody.innerHTML=rows.map(e=>`<tr id="earn-row-${e.id}" class="${selectedIds.has(e.id)?'row-selected':''}">
+  const cols = isReadOnly() ? 9 : 10;
+  const amtColIdx = isReadOnly() ? 6 : 7;
+  tbody.innerHTML = rows.map(e=>`<tr id="earn-row-${e.id}" class="${selectedIds.has(e.id)?'row-selected':''}">
     ${isReadOnly() ? '' : `<td class="cb-col"><input type="checkbox" class="row-cb" data-id="${e.id}" data-table="earn" onchange="onRowCheck(this)" ${selectedIds.has(e.id)?'checked':''}></td>`}
     <td class="amount-mono" style="color:var(--muted);font-size:11px">${e.date}</td>
     <td>${e.desc}</td>
@@ -2206,7 +2240,11 @@ function renderEarnings() {
     <td class="amount-earn">+${fmt(e.amount)}</td>
     <td style="color:var(--muted);font-size:11px;max-width:140px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis" title="${e.notes||''}">${e.notes||'—'}</td>
     ${isReadOnly() ? '' : `<td><div class="action-btns"><button class="btn btn-edit btn-sm" onclick="openEditModal(${e.id})">✏️</button><button class="btn btn-danger btn-sm" onclick="deleteEntry(${e.id})">✕</button></div></td>`}
-  </tr>`).join('');
+  </tr>`).join('') + `<tr class="total-row" id="earn-total-row">
+    <td colspan="${amtColIdx}" class="total-label">TOTAL <span id="earn-total-sel-badge" class="total-sel-badge" style="display:none"></span></td>
+    <td class="total-amount-earn" id="earn-total-amt">+${fmt(earnTotal)}</td>
+    <td colspan="${cols - amtColIdx - 1}"></td>
+  </tr>`;
 }
 
 /* ─── MONTHLY ────────────────────────────────────── */
@@ -3025,12 +3063,44 @@ checkAuth();
 /* ─── Row Selection & Copy ───────────────────────── */
 const selectedIds = new Set();
 
+function updateTableTotals() {
+  const selEntries = entries.filter(e => selectedIds.has(e.id));
+  const hasSel = selEntries.length > 0;
+
+  // Expenses total
+  const expAmt = document.getElementById('exp-total-amt');
+  const expBadge = document.getElementById('exp-total-sel-badge');
+  if (expAmt) {
+    const expVisible = [...document.querySelectorAll('#exp-tbody tr[id^="exp-row-"]')]
+      .map(tr => Number(tr.id.replace('exp-row-','')));
+    const expSel = hasSel ? selEntries.filter(e=>e.type==='expense'&&expVisible.includes(e.id)) : null;
+    const expRows = entries.filter(e=>e.type==='expense'&&expVisible.includes(e.id));
+    const total = expSel ? expSel.reduce((s,e)=>s+e.amount,0) : expRows.reduce((s,e)=>s+e.amount,0);
+    expAmt.textContent = `-${fmt(total)}`;
+    if (expBadge) { expBadge.style.display = expSel&&expSel.length ? '' : 'none'; expBadge.textContent = `${expSel?.length||0} selected`; }
+  }
+
+  // Earnings total
+  const earnAmt = document.getElementById('earn-total-amt');
+  const earnBadge = document.getElementById('earn-total-sel-badge');
+  if (earnAmt) {
+    const earnVisible = [...document.querySelectorAll('#earn-tbody tr[id^="earn-row-"]')]
+      .map(tr => Number(tr.id.replace('earn-row-','')));
+    const earnSel = hasSel ? selEntries.filter(e=>e.type==='earning'&&earnVisible.includes(e.id)) : null;
+    const earnRows = entries.filter(e=>e.type==='earning'&&earnVisible.includes(e.id));
+    const total = earnSel ? earnSel.reduce((s,e)=>s+e.amount,0) : earnRows.reduce((s,e)=>s+e.amount,0);
+    earnAmt.textContent = `+${fmt(total)}`;
+    if (earnBadge) { earnBadge.style.display = earnSel&&earnSel.length ? '' : 'none'; earnBadge.textContent = `${earnSel?.length||0} selected`; }
+  }
+}
+
 function onRowCheck(cb) {
   const id = Number(cb.dataset.id);
   if (cb.checked) selectedIds.add(id); else selectedIds.delete(id);
   cb.closest('tr').classList.toggle('row-selected', cb.checked);
   updateCopyBar();
   syncSelectAll(cb.dataset.table);
+  updateTableTotals();
 }
 
 function toggleSelectAll(table) {
@@ -3043,6 +3113,7 @@ function toggleSelectAll(table) {
     cb.closest('tr').classList.toggle('row-selected', allCb.checked);
   });
   updateCopyBar();
+  updateTableTotals();
 }
 
 function syncSelectAll(table) {
@@ -3065,6 +3136,7 @@ function clearSelection() {
   document.querySelectorAll('input.row-cb').forEach(cb => { cb.checked = false; cb.closest('tr').classList.remove('row-selected'); });
   ['exp-select-all','earn-select-all'].forEach(id => { const el=document.getElementById(id); if(el){el.checked=false;el.indeterminate=false;} });
   updateCopyBar();
+  updateTableTotals();
 }
 
 async function copySelected() {
