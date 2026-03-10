@@ -81,6 +81,56 @@
   --dim:#302028; --red:#D05050; --green:#90C888;
 }
 
+/* ── Elegant Themes ─────────────────────────────── */
+[data-theme="forestmoss"] {
+  --bg:#060D08; --surface:#0D1810; --panel:#142018;
+  --border:rgba(100,180,80,0.18); --accent:#7EC860; --gold:#C8A83C;
+  --rust:#D0784A; --sky:#78C8A0; --text:#E8F4E0; --muted:#7A9E78;
+  --dim:#1A2E18; --red:#D06050; --green:#7EC860;
+}
+[data-theme="midnightplum"] {
+  --bg:#080610; --surface:#110D1C; --panel:#1A1428;
+  --border:rgba(160,120,220,0.18); --accent:#B090E8; --gold:#D4A8E0;
+  --rust:#E080A0; --sky:#90C8F0; --text:#F0ECFF; --muted:#8878AA;
+  --dim:#221A38; --red:#E05878; --green:#78D0A8;
+}
+[data-theme="burntsienna"] {
+  --bg:#0E0906; --surface:#1A1210; --panel:#241A16;
+  --border:rgba(200,120,70,0.18); --accent:#D07848; --gold:#E8A050;
+  --rust:#C85838; --sky:#A8C8D8; --text:#FFF0E8; --muted:#A08070;
+  --dim:#301E14; --red:#C84838; --green:#88B870;
+}
+[data-theme="goldenharvest"] {
+  --bg:#0A0800; --surface:#161000; --panel:#201800;
+  --border:rgba(220,170,40,0.18); --accent:#E8B830; --gold:#F0C840;
+  --rust:#E07030; --sky:#88C8B0; --text:#FFF8E0; --muted:#A09040;
+  --dim:#2A2000; --red:#D05838; --green:#90C060;
+}
+[data-theme="arcticmist"] {
+  --bg:#050A10; --surface:#0C1420; --panel:#121E2E;
+  --border:rgba(130,200,240,0.16); --accent:#78C8F0; --gold:#90D8F8;
+  --rust:#70A8D8; --sky:#A8E8FF; --text:#E8F8FF; --muted:#6898B8;
+  --dim:#182840; --red:#E06878; --green:#60D8B8;
+}
+[data-theme="dustyrose"] {
+  --bg:#0E0A0C; --surface:#1A1318; --panel:#241A20;
+  --border:rgba(200,140,160,0.18); --accent:#D89AB0; --gold:#E0B8A8;
+  --rust:#C87890; --sky:#B8A8D8; --text:#FFF0F4; --muted:#A07888;
+  --dim:#301828; --red:#D05870; --green:#88C8A0;
+}
+[data-theme="obsidian"] {
+  --bg:#000000; --surface:#0A0A0A; --panel:#141414;
+  --border:rgba(220,220,220,0.14); --accent:#E0E0E0; --gold:#FFFFFF;
+  --rust:#C0C0C0; --sky:#D0D0D0; --text:#FFFFFF; --muted:#707070;
+  --dim:#1E1E1E; --red:#F05050; --green:#80D880;
+}
+[data-theme="autumnember"] {
+  --bg:#0C0608; --surface:#180C10; --panel:#221018;
+  --border:rgba(200,80,60,0.18); --accent:#E06840; --gold:#D4902A;
+  --rust:#C04830; --sky:#D0A080; --text:#FFF4EE; --muted:#A06858;
+  --dim:#2E1010; --red:#E04030; --green:#98B860;
+}
+
 /* ── Theme Switcher ─────────────────────────────── */
 .theme-switcher { padding: 12px 10px 6px; border-top: 1px solid var(--border); margin-top: 8px; }
 .theme-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--dim); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 8px; }
@@ -886,6 +936,14 @@ svg.sparkline { overflow: visible; }
       <div class="theme-swatch"        data-theme="ivory"    title="Warm Ivory"  onclick="setTheme('ivory')"    style="background:linear-gradient(135deg,#F7F3EC 50%,#8B5E3C 50%)"></div>
       <div class="theme-swatch"        data-theme="navy"     title="Deep Navy"   onclick="setTheme('navy')"     style="background:linear-gradient(135deg,#070B14 50%,#6AA0F0 50%)"></div>
       <div class="theme-swatch"        data-theme="rosegold" title="Rose Gold"   onclick="setTheme('rosegold')" style="background:linear-gradient(135deg,#110C0E 50%,#DCA08C 50%)"></div>
+      <div class="theme-swatch"        data-theme="forestmoss"   title="Forest Moss"    onclick="setTheme('forestmoss')"   style="background:linear-gradient(135deg,#060D08 50%,#7EC860 50%)"></div>
+      <div class="theme-swatch"        data-theme="midnightplum" title="Midnight Plum"  onclick="setTheme('midnightplum')" style="background:linear-gradient(135deg,#080610 50%,#B090E8 50%)"></div>
+      <div class="theme-swatch"        data-theme="burntsienna"  title="Burnt Sienna"   onclick="setTheme('burntsienna')"  style="background:linear-gradient(135deg,#0E0906 50%,#D07848 50%)"></div>
+      <div class="theme-swatch"        data-theme="goldenharvest" title="Golden Harvest" onclick="setTheme('goldenharvest')" style="background:linear-gradient(135deg,#0A0800 50%,#E8B830 50%)"></div>
+      <div class="theme-swatch"        data-theme="arcticmist"   title="Arctic Mist"    onclick="setTheme('arcticmist')"   style="background:linear-gradient(135deg,#050A10 50%,#78C8F0 50%)"></div>
+      <div class="theme-swatch"        data-theme="dustyrose"    title="Dusty Rose"     onclick="setTheme('dustyrose')"    style="background:linear-gradient(135deg,#0E0A0C 50%,#D89AB0 50%)"></div>
+      <div class="theme-swatch"        data-theme="obsidian"     title="Obsidian"       onclick="setTheme('obsidian')"     style="background:linear-gradient(135deg,#000000 50%,#E0E0E0 50%)"></div>
+      <div class="theme-swatch"        data-theme="autumnember"  title="Autumn Ember"   onclick="setTheme('autumnember')"  style="background:linear-gradient(135deg,#0C0608 50%,#E06840 50%)"></div>
     </div>
   </div>
   <div class="sidebar-footer">
@@ -2698,14 +2756,17 @@ async function dbDeleteUser(username) {
 }
 
 async function dbUserCount() {
+  // Returns the count on success, or null on any error/network failure
   try {
     const res = await fetch(SUPABASE_URL + '/rest/v1/app_users?select=username', {
       headers: { ...SB_HEADERS, 'Prefer': 'count=exact', 'Range': '0-0' }
     });
+    if (!res.ok) return null; // DB reachable but error — don't assume 0
     const hdr = res.headers.get('content-range');
     if (hdr) { const m = hdr.match(/\/(\d+)/); if (m) return parseInt(m[1]); }
-    const data = await res.json().catch(() => []); return Array.isArray(data) ? data.length : 0;
-  } catch(e) { return 0; }
+    const data = await res.json().catch(() => null);
+    return Array.isArray(data) ? data.length : null;
+  } catch(e) { return null; } // Network error — unknown, not zero
 }
 
 /* ── Auth UI helpers ─────────────────────────────── */
@@ -2946,18 +3007,16 @@ async function checkAuth() {
   }
 
   // Check if any users exist in DB
-  try {
-    const count = await dbUserCount();
-    if (count === 0) {
-      document.getElementById('panel-setup').style.display = '';
-      setTimeout(() => document.getElementById('setup-name').focus(), 80);
-    } else {
-      document.getElementById('panel-login').style.display = '';
-      setTimeout(() => document.getElementById('login-user').focus(), 80);
-    }
-  } catch(e) {
+  const count = await dbUserCount();
+  if (count === 0) {
+    // DB confirmed no users — first-time setup
+    document.getElementById('panel-setup').style.display = '';
+    setTimeout(() => document.getElementById('setup-name').focus(), 80);
+  } else {
+    // count > 0, or null (error/unreachable) — always show login
     document.getElementById('panel-login').style.display = '';
-    showAuthMsg('login-msg', '⚠ Could not connect to database');
+    if (count === null) showAuthMsg('login-msg', '⚠ Could not connect — check your connection');
+    setTimeout(() => document.getElementById('login-user').focus(), 80);
   }
 }
 
