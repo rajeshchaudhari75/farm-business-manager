@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Antarang Organic Farms</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;500&family=Kalnia:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 <style>
 /* ── Root Variables ─────────────────────────────── */
 :root {
@@ -133,7 +133,7 @@
 
 /* ── Theme Switcher ─────────────────────────────── */
 .theme-switcher { padding: 12px 10px 6px; border-top: 1px solid var(--border); margin-top: 8px; }
-.theme-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--dim); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 8px; }
+.theme-label { font-family: 'DM Mono', monospace; font-size: 9px; color: var(--dim); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 8px; }
 .theme-swatches { display: flex; gap: 7px; flex-wrap: wrap; }
 .theme-swatch {
   width: 22px; height: 22px; border-radius: 50%; cursor: pointer;
@@ -147,7 +147,7 @@
   transform: translateX(-50%); background: var(--panel); color: var(--text);
   font-size: 10px; padding: 3px 7px; border-radius: 4px; white-space: nowrap;
   pointer-events: none; opacity: 0; transition: opacity 0.15s;
-  border: 1px solid var(--border); font-family: 'JetBrains Mono', monospace;
+  border: 1px solid var(--border); font-family: 'DM Mono', monospace;
 }
 .theme-swatch:hover::after { opacity: 1; }
 
@@ -156,7 +156,7 @@
 html, body { height: 100%; overflow: hidden; }
 
 body {
-  font-family: 'Syne', sans-serif;
+  font-family: 'Inter', sans-serif;
   background: var(--bg);
   color: var(--text);
   height: 100vh;
@@ -198,11 +198,11 @@ body {
   border-bottom: 1px solid var(--border);
 }
 .logo-icon { font-size: 28px; display: block; margin-bottom: 4px; }
-.logo h1 { font-size: 17px; font-weight: 600; letter-spacing: 0.2px; color: var(--accent); line-height: 1.2; font-family: 'Kalnia', serif; }
-.logo p { font-size: 10px; color: var(--muted); font-family: 'Kalnia', serif; font-weight: 400; margin-top: 3px; letter-spacing: 0.3px; }
+.logo h1 { font-size: 17px; font-weight: 600; letter-spacing: 0.2px; color: var(--accent); line-height: 1.2; font-family: 'Playfair Display', serif; }
+.logo p { font-size: 10px; color: var(--muted); font-family: 'Playfair Display', serif; font-weight: 400; margin-top: 3px; letter-spacing: 0.3px; }
 
 .nav { padding: 12px 10px; flex: 1; overflow-y: auto; }
-.nav-section { font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--dim); letter-spacing: 1.5px; text-transform: uppercase; padding: 10px 8px 5px; }
+.nav-section { font-family: 'DM Mono', monospace; font-size: 9px; color: var(--dim); letter-spacing: 1.5px; text-transform: uppercase; padding: 10px 8px 5px; }
 
 .nav-item {
   display: flex; align-items: center; gap: 9px;
@@ -217,13 +217,13 @@ body {
 .sidebar-footer {
   padding: 12px 16px;
   border-top: 1px solid var(--border);
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'DM Mono', monospace;
   font-size: 10px; color: var(--muted);
 }
 .sidebar-footer strong { color: var(--gold); }
 
 /* ── Topbar ──────────────────────────────────────── */
-.page-title { font-size: 20px; font-weight: 700; color: var(--text); }
+.page-title { font-size: 20px; font-weight: 700; color: var(--text); letter-spacing: -0.3px; }
 .topbar-right { display: flex; gap: 10px; align-items: center; }
 
 /* ── User Menu ───────────────────────────────────── */
@@ -231,7 +231,7 @@ body {
 .user-avatar {
   width: 36px; height: 36px; border-radius: 50%;
   background: var(--accent); color: #1A0806;
-  font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700;
+  font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 700;
   display: flex; align-items: center; justify-content: center;
   cursor: pointer; border: 2px solid transparent;
   transition: border-color 0.2s; user-select: none; flex-shrink: 0;
@@ -257,7 +257,7 @@ body {
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
 .user-dropdown-role {
-  font-family: 'JetBrains Mono', monospace; font-size: 9px;
+  font-family: 'DM Mono', monospace; font-size: 9px;
   color: var(--muted); letter-spacing: 1px; text-transform: uppercase;
   margin-top: 2px;
 }
@@ -276,7 +276,7 @@ body {
 /* Role badge */
 .role-badge {
   display:inline-block; padding:2px 7px; border-radius:4px;
-  font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:1px;
+  font-family:'DM Mono',monospace; font-size:9px; letter-spacing:1px;
   text-transform:uppercase; font-weight:700; margin-left:6px; vertical-align:middle;
 }
 .role-badge.admin { background:rgba(253,188,180,0.15); color:var(--accent,#FDBCB4); }
@@ -286,7 +286,7 @@ body {
 #readonly-banner {
   display:none; background:rgba(140,170,210,0.12);
   border-bottom:1px solid rgba(140,170,210,0.25);
-  padding:7px 24px; font-family:'JetBrains Mono',monospace;
+  padding:7px 24px; font-family:'DM Mono',monospace;
   font-size:11px; color:#8CAAD2; letter-spacing:0.5px;
   flex-shrink:0; text-align:center;
 }
@@ -299,11 +299,11 @@ body {
 }
 .user-row-info { flex:1; }
 .user-row-name { font-size:13px; font-weight:600; color:var(--text); }
-.user-row-meta { font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--muted); margin-top:2px; }
+.user-row-meta { font-family:'DM Mono',monospace; font-size:10px; color:var(--muted); margin-top:2px; }
 .user-row-del {
   background:none; border:1px solid rgba(232,90,74,0.3); border-radius:6px;
   color:rgba(232,90,74,0.6); font-size:11px; cursor:pointer; padding:4px 8px;
-  transition:all 0.2s; font-family:'JetBrains Mono',monospace;
+  transition:all 0.2s; font-family:'DM Mono',monospace;
 }
 .user-row-del:hover { border-color:var(--red,#E85A4A); color:var(--red,#E85A4A); background:rgba(232,90,74,0.08); }
 .user-row-del:disabled { opacity:0.3; cursor:default; }
@@ -311,7 +311,7 @@ body {
 /* ── Buttons ─────────────────────────────────────── */
 .btn {
   padding: 8px 16px; border-radius: 8px; border: none;
-  font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 600;
+  font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600;
   cursor: pointer; transition: all 0.15s; display: inline-flex; align-items: center; gap: 6px;
 }
 .btn-primary { background: var(--accent); color: #1A0806; }
@@ -350,7 +350,7 @@ tr.row-selected { background: rgba(253,188,180,0.07); }
 .month-tab {
   padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 600;
   cursor: pointer; border: 1px solid var(--border); color: var(--muted);
-  transition: all 0.15s; font-family: 'JetBrains Mono', monospace;
+  transition: all 0.15s; font-family: 'DM Mono', monospace;
 }
 .month-tab:hover { border-color: var(--accent); color: var(--accent); }
 .month-tab.active { background: var(--accent); color: #1A0806; border-color: var(--accent); }
@@ -372,11 +372,11 @@ tr.row-selected { background: rgba(253,188,180,0.07); }
 .kpi.gold-accent::after { background: var(--gold); }
 .kpi.sky-accent::after { background: var(--sky); }
 
-.kpi-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; text-transform: uppercase; letter-spacing: 1.2px; color: var(--muted); margin-bottom: 10px; }
-.kpi-value { font-size: 24px; font-weight: 800; letter-spacing: -0.5px; }
+.kpi-label { font-family: 'DM Mono', monospace; font-size: 9px; text-transform: uppercase; letter-spacing: 1.2px; color: var(--muted); margin-bottom: 10px; }
+.kpi-value { font-size: 24px; font-weight: 700; letter-spacing: -0.8px; }
 .kpi-value.positive { color: var(--green); }
 .kpi-value.negative { color: var(--red); }
-.kpi-sub { font-size: 11px; color: var(--muted); margin-top: 5px; font-family: 'JetBrains Mono', monospace; }
+.kpi-sub { font-size: 11px; color: var(--muted); margin-top: 5px; font-family: 'DM Mono', monospace; }
 
 /* ── Grid layouts ────────────────────────────────── */
 .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
@@ -394,15 +394,15 @@ tr.row-selected { background: rgba(253,188,180,0.07); }
   border-bottom: 1px solid var(--border);
   display: flex; align-items: center; justify-content: space-between;
 }
-.card-title { font-size: 13px; font-weight: 700; color: var(--text); letter-spacing: 0.2px; }
+.card-title { font-size: 13px; font-weight: 600; color: var(--text); letter-spacing: -0.1px; }
 .card-body { padding: 16px 18px; }
 
 /* ── Bar chart ───────────────────────────────────── */
 .bar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
-.bar-lbl { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--muted); width: 100px; flex-shrink: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.bar-lbl { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); width: 100px; flex-shrink: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .bar-track { flex: 1; height: 7px; background: rgba(255,255,255,0.05); border-radius: 4px; overflow: hidden; }
 .bar-fill { height: 100%; border-radius: 4px; transition: width 0.6s cubic-bezier(.16,1,.3,1); }
-.bar-val { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text); width: 75px; text-align: right; flex-shrink: 0; }
+.bar-val { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--text); width: 75px; text-align: right; flex-shrink: 0; }
 
 /* ── Weekly comparison ───────────────────────────── */
 .week-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 10px; }
@@ -413,7 +413,7 @@ tr.row-selected { background: rgba(253,188,180,0.07); }
   padding: 12px 10px;
   text-align: center;
 }
-.week-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--muted); letter-spacing: 1px; margin-bottom: 8px; }
+.week-label { font-family: 'DM Mono', monospace; font-size: 9px; color: var(--muted); letter-spacing: 1px; margin-bottom: 8px; }
 .week-exp { font-size: 12px; font-weight: 700; color: var(--red); }
 .week-earn { font-size: 12px; font-weight: 700; color: var(--green); }
 .week-divider { border: none; border-top: 1px solid var(--border); margin: 5px 0; }
@@ -433,7 +433,7 @@ table { width: 100%; border-collapse: collapse; }
 thead tr { background: rgba(0,0,0,0.25); }
 thead th {
   padding: 10px 14px; text-align: left;
-  font-family: 'JetBrains Mono', monospace; font-size: 9px;
+  font-family: 'DM Mono', monospace; font-size: 9px;
   text-transform: uppercase; letter-spacing: 1px; color: var(--muted);
   border-bottom: 1px solid var(--border); white-space: nowrap;
 }
@@ -444,7 +444,7 @@ tbody td { padding: 11px 14px; font-size: 13px; color: var(--text); }
 
 .badge {
   display: inline-block; padding: 2px 8px; border-radius: 20px;
-  font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 500;
+  font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 500;
 }
 .badge-LABOUR         { background: rgba(196,168,232,0.15); color: #C4A8E8; }
 .badge-SEEDS          { background: rgba(253,188,180,0.15); color: #FDBCB4; }
@@ -455,9 +455,9 @@ tbody td { padding: 11px 14px; font-size: 13px; color: var(--text); }
 .badge-TRAVEL         { background: rgba(240,180,60,0.15); color: #F0B43C; }
 .badge-EARNINGS       { background: rgba(168,212,160,0.15); color: #A8D4A0; }
 
-.amount-exp  { font-family: 'JetBrains Mono', monospace; color: var(--red); }
-.amount-earn { font-family: 'JetBrains Mono', monospace; color: var(--green); }
-.amount-mono { font-family: 'JetBrains Mono', monospace; }
+.amount-exp  { font-family: 'DM Mono', monospace; color: var(--red); }
+.amount-earn { font-family: 'DM Mono', monospace; color: var(--green); }
+.amount-mono { font-family: 'DM Mono', monospace; }
 
 /* ── Total footer bar ────────────────────────────── */
 .total-footer {
@@ -470,7 +470,7 @@ tbody td { padding: 11px 14px; font-size: 13px; color: var(--text); }
   margin-top: -1px;
 }
 .total-footer-label {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'DM Mono', monospace;
   font-size: 10px; text-transform: uppercase; letter-spacing: 1.2px;
   color: var(--muted); font-weight: 700;
 }
@@ -480,7 +480,7 @@ tbody td { padding: 11px 14px; font-size: 13px; color: var(--text); }
   border-radius: 10px; color: var(--accent); margin-left: 8px; vertical-align: middle;
 }
 .total-footer-amt {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'DM Mono', monospace;
   font-size: 16px; font-weight: 800; letter-spacing: -0.5px;
 }
 .total-footer-exp  { color: var(--red); }
@@ -495,10 +495,10 @@ svg.sparkline { overflow: visible; }
 .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 .fg { display: flex; flex-direction: column; gap: 5px; }
 .fg.full { grid-column: 1/-1; }
-.fg label { font-family: 'JetBrains Mono', monospace; font-size: 9px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); }
+.fg label { font-family: 'DM Mono', monospace; font-size: 9px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); }
 .fg input, .fg select, .fg textarea {
   background: var(--surface); border: 1px solid var(--border); color: var(--text);
-  padding: 9px 12px; border-radius: 8px; font-family: 'Syne', sans-serif; font-size: 13px; outline: none;
+  padding: 9px 12px; border-radius: 8px; font-family: 'Inter', sans-serif; font-size: 13px; outline: none;
   transition: border-color 0.15s;
 }
 .fg input:focus, .fg select:focus, .fg textarea:focus { border-color: var(--accent); }
@@ -547,9 +547,9 @@ svg.sparkline { overflow: visible; }
 .donut-legend-list { flex: 1; }
 .dl-item { display: flex; align-items: center; gap: 8px; margin-bottom: 9px; font-size: 12px; cursor: pointer; }
 .dl-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
-.dl-pct { margin-left: auto; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--muted); }
+.dl-pct { margin-left: auto; font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); }
 .dl-name { font-size: 12px; }
-.dl-val { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--muted); }
+.dl-val { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); }
 
 /* ── Section spacing ─────────────────────────────── */
 .mb16 { margin-bottom: 16px; }
@@ -583,7 +583,7 @@ svg.sparkline { overflow: visible; }
 .sub-add-row { display: flex; gap: 6px; margin-top: 8px; }
 .sub-add-input {
   flex: 1; background: var(--surface); border: 1px solid var(--border); color: var(--text);
-  padding: 7px 10px; border-radius: 7px; font-family: 'Syne',sans-serif; font-size: 12px; outline: none;
+  padding: 7px 10px; border-radius: 7px; font-family: 'Inter',sans-serif; font-size: 12px; outline: none;
 }
 .sub-add-input:focus { border-color: var(--accent); }
 .btn-icon {
@@ -618,14 +618,14 @@ svg.sparkline { overflow: visible; }
 }
 .cal-nav-btn:hover { border-color: var(--accent); color: var(--accent); }
 .cal-month-label {
-  font-family: 'JetBrains Mono', monospace; font-size: 11px;
+  font-family: 'DM Mono', monospace; font-size: 11px;
   font-weight: 600; color: var(--text); letter-spacing: 0.5px;
 }
 .cal-grid {
   display: grid; grid-template-columns: repeat(7, 1fr); gap: 3px;
 }
 .cal-day-name {
-  text-align: center; font-family: 'JetBrains Mono', monospace;
+  text-align: center; font-family: 'DM Mono', monospace;
   font-size: 9px; color: var(--dim); padding: 4px 0; letter-spacing: 0.5px;
 }
 .cal-day {
@@ -642,7 +642,7 @@ svg.sparkline { overflow: visible; }
 .cal-day.today { border-color: rgba(253,188,180,0.4); color: var(--accent); }
 .cal-day.today.selected { background: var(--accent); color: #1A0806; }
 .cal-selected-count {
-  margin-top: 8px; font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  margin-top: 8px; font-family: 'DM Mono', monospace; font-size: 10px;
   color: var(--accent); text-align: center; min-height: 16px;
 }
 /* ── Auth Screen ────────────────────────────────── */
@@ -650,7 +650,7 @@ svg.sparkline { overflow: visible; }
   position:fixed; inset:0; z-index:9999;
   background:#0A0A0A;
   display:flex; align-items:center; justify-content:center;
-  font-family:'Syne',sans-serif;
+  font-family:'Inter',sans-serif;
 }
 .auth-wrap {
   width:100%; max-width:420px; padding:24px;
@@ -661,11 +661,11 @@ svg.sparkline { overflow: visible; }
 }
 .auth-brand img { width:60px; height:60px; object-fit:contain; margin-bottom:12px; }
 .auth-brand h1 {
-  font-family:'Kalnia',serif; font-size:22px; font-weight:600;
+  font-family:'Playfair Display',serif; font-size:22px; font-weight:600;
   color:#FFFFFF; margin:0 0 4px; line-height:1.3;
 }
 .auth-brand p {
-  font-family:'JetBrains Mono',monospace; font-size:10px;
+  font-family:'DM Mono',monospace; font-size:10px;
   color:#555; letter-spacing:1.2px; text-transform:uppercase; margin:0;
 }
 .auth-card {
@@ -680,7 +680,7 @@ svg.sparkline { overflow: visible; }
 }
 .auth-tab {
   padding:16px; text-align:center; cursor:pointer;
-  font-family:'JetBrains Mono',monospace; font-size:11px;
+  font-family:'DM Mono',monospace; font-size:11px;
   letter-spacing:1.5px; text-transform:uppercase;
   color:#555; border:none; background:none;
   transition:all 0.2s; position:relative;
@@ -693,7 +693,7 @@ svg.sparkline { overflow: visible; }
 .auth-body { padding:28px 28px 24px; display:flex; flex-direction:column; gap:16px; }
 .auth-field { display:flex; flex-direction:column; gap:6px; }
 .auth-field label {
-  font-family:'JetBrains Mono',monospace; font-size:10px;
+  font-family:'DM Mono',monospace; font-size:10px;
   color:#777; letter-spacing:1.2px; text-transform:uppercase;
 }
 .auth-input-wrap { position:relative; }
@@ -701,7 +701,7 @@ svg.sparkline { overflow: visible; }
   width:100%; box-sizing:border-box;
   background:#1E1E1E; border:1px solid rgba(255,255,255,0.1);
   border-radius:8px; padding:13px 42px 13px 14px;
-  font-family:'JetBrains Mono',monospace; font-size:13px;
+  font-family:'DM Mono',monospace; font-size:13px;
   color:#FFFFFF; outline:none; transition:border-color 0.2s;
 }
 .auth-input:focus { border-color:rgba(253,188,180,0.45); }
@@ -713,7 +713,7 @@ svg.sparkline { overflow: visible; }
 }
 .auth-eye:hover { opacity:0.75; }
 .auth-msg {
-  font-family:'JetBrains Mono',monospace; font-size:11px;
+  font-family:'DM Mono',monospace; font-size:11px;
   min-height:18px; text-align:center; border-radius:6px;
   padding:0; transition:all 0.2s;
 }
@@ -722,7 +722,7 @@ svg.sparkline { overflow: visible; }
 .auth-submit {
   width:100%; background:var(--accent,#FDBCB4); color:#1A0806;
   border:none; border-radius:8px; padding:14px;
-  font-family:'Syne',sans-serif; font-size:15px; font-weight:700;
+  font-family:'Inter',sans-serif; font-size:15px; font-weight:700;
   cursor:pointer; transition:opacity 0.2s; letter-spacing:0.3px;
   margin-top:4px;
 }
@@ -730,7 +730,7 @@ svg.sparkline { overflow: visible; }
 .auth-submit:disabled { opacity:0.5; cursor:default; }
 .auth-footer {
   text-align:center; margin-top:20px;
-  font-family:'JetBrains Mono',monospace; font-size:9px;
+  font-family:'DM Mono',monospace; font-size:9px;
   color:#2A2A2A; letter-spacing:1px; text-transform:uppercase;
 }
 #app-root.hidden { display:none; }
@@ -870,8 +870,8 @@ svg.sparkline { overflow: visible; }
     <div class="auth-card">
       <!-- FIRST-RUN SETUP PANEL (shown only when no users exist) -->
       <div id="panel-setup" class="auth-body" style="display:none">
-        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--accent,#FDBCB4);letter-spacing:1px;text-transform:uppercase;text-align:center;margin-bottom:4px;">First Time Setup</div>
-        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#666;text-align:center;margin-bottom:8px;">Create the admin account</div>
+        <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--accent,#FDBCB4);letter-spacing:1px;text-transform:uppercase;text-align:center;margin-bottom:4px;">First Time Setup</div>
+        <div style="font-family:'DM Mono',monospace;font-size:11px;color:#666;text-align:center;margin-bottom:8px;">Create the admin account</div>
         <div class="auth-field">
           <label>Full Name</label>
           <div class="auth-input-wrap">
@@ -943,6 +943,8 @@ svg.sparkline { overflow: visible; }
     <div class="nav-section">Records</div>
     <div class="nav-item" data-view="expenses" onclick="nav(this)"><span class="ni">📋</span> Expenses</div>
     <div class="nav-item" data-view="earnings" onclick="nav(this)"><span class="ni">💰</span> Earnings</div>
+    <div class="nav-item" id="nav-ledger" data-view="ledger" onclick="nav(this)"><span class="ni">📒</span> Ledger</div>
+    <div class="nav-item" id="nav-farmstay" data-view="farmstay" onclick="nav(this)"><span class="ni">🏕</span> Farmstay</div>
     <div class="nav-section">Analysis</div>
     <div class="nav-item" data-view="monthly" onclick="nav(this)"><span class="ni">📅</span> Monthly View</div>
     <div class="nav-item" data-view="catview" onclick="nav(this)"><span class="ni">🏷</span> Categories</div>
@@ -1045,7 +1047,7 @@ svg.sparkline { overflow: visible; }
     <!-- ─── EXPENSES ──────────────────────────── -->
     <div class="view" id="view-expenses">
       <div class="mb16" style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
-        <input type="text" id="exp-search" placeholder="🔍 Search description, notes…" oninput="renderExpenses()" style="background:var(--surface);border:1px solid var(--border);color:var(--text);padding:7px 12px;border-radius:8px;font-family:'Syne',sans-serif;font-size:12px;outline:none;width:220px;">
+        <input type="text" id="exp-search" placeholder="🔍 Search description, notes…" oninput="renderExpenses()" style="background:var(--surface);border:1px solid var(--border);color:var(--text);padding:7px 12px;border-radius:8px;font-family:'Inter',sans-serif;font-size:12px;outline:none;width:220px;">
         <select class="btn btn-ghost" id="exp-month-f" onchange="renderExpenses()" style="font-size:12px;padding:7px 12px"><option value="">All Months</option></select>
         <select class="btn btn-ghost" id="exp-cat-f" onchange="renderExpenses()" style="font-size:12px;padding:7px 12px"><option value="">All Categories</option></select>
         <select class="btn btn-ghost" id="exp-week-f" onchange="renderExpenses()" style="font-size:12px;padding:7px 12px">
@@ -1075,10 +1077,94 @@ svg.sparkline { overflow: visible; }
       </div>
     </div>
 
+    <!-- ─── ACCOUNTS ──────────────────────────── -->
+    <div class="view" id="view-ledger">
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:16px;">
+        <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+          <select class="btn btn-ghost" id="ld-month-f" onchange="renderLedger()" style="font-size:12px;padding:7px 12px"><option value="">All Months</option></select>
+          <select class="btn btn-ghost" id="ld-type-f" onchange="renderLedger()" style="font-size:12px;padding:7px 12px">
+            <option value="">All Types</option>
+            <option value="credit">Credit</option>
+            <option value="debit">Debit</option>
+          </select>
+          <input type="text" id="ld-search" placeholder="🔍 Search…" oninput="renderLedger()" style="background:var(--surface);border:1px solid var(--border);color:var(--text);padding:7px 12px;border-radius:8px;font-family:'Inter',sans-serif;font-size:12px;outline:none;width:180px;">
+          <span class="text-muted" id="ld-count"></span>
+        </div>
+        <button class="btn btn-primary" onclick="ldAddRow()">＋ Add Row</button>
+      </div>
+      <div class="card">
+        <div class="tbl-wrap">
+          <table id="ld-table" class="ld-table">
+            <thead><tr>
+              <th style="width:32px"></th>
+              <th class="sortable" onclick="ldSortBy('date')">Date <span class="sort-icon" id="ld-si-date">↕</span></th>
+              <th>Description</th>
+              <th onclick="ldSortBy('month')" class="sortable">Month <span class="sort-icon" id="ld-si-month">↕</span></th>
+              <th>Type</th>
+              <th>Category</th>
+              <th onclick="ldSortBy('amount')" class="sortable">Amount <span class="sort-icon" id="ld-si-amount">↕</span></th>
+              <th>Reference</th>
+              <th>Notes</th>
+              <th style="width:80px">Actions</th>
+            </tr></thead>
+            <tbody id="ld-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="total-footer" id="ld-total-footer" style="display:none">
+        <span class="total-footer-label">TOTAL</span>
+        <div style="display:flex;gap:18px;align-items:center;flex-wrap:wrap">
+          <span style="font-family:'DM Mono',monospace;font-size:12px;color:var(--green)">Credit: <span id="ld-total-credit">₹0</span></span>
+          <span style="font-family:'DM Mono',monospace;font-size:12px;color:var(--red)">Debit: <span id="ld-total-debit">₹0</span></span>
+          <span class="total-footer-amt" id="ld-total-balance"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── FARMSTAY ─────────────────────────── -->
+    <div class="view" id="view-farmstay">
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:16px;">
+        <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+          <select class="btn btn-ghost" id="fs-month-f" onchange="renderFarmstay()" style="font-size:12px;padding:7px 12px"><option value="">All Months</option></select>
+          <select class="btn btn-ghost" id="fs-type-f" onchange="renderFarmstay()" style="font-size:12px;padding:7px 12px">
+            <option value="">All Types</option><option value="income">Income</option><option value="expense">Expense</option>
+          </select>
+          <span class="text-muted" id="fs-count"></span>
+        </div>
+        <button class="btn btn-primary" onclick="fsAddRow()">＋ Add Row</button>
+      </div>
+      <div class="card">
+        <div class="tbl-wrap">
+          <table id="fs-table" class="fs-table">
+            <thead><tr>
+              <th style="width:36px"></th>
+              <th class="sortable" onclick="fsSortBy('date')">Date <span class="sort-icon" id="fs-si-date">↕</span></th>
+              <th>Description</th>
+              <th onclick="fsSortBy('month')" class="sortable">Month <span class="sort-icon" id="fs-si-month">↕</span></th>
+              <th>Type</th>
+              <th>Category</th>
+              <th onclick="fsSortBy('amount')" class="sortable">Amount <span class="sort-icon" id="fs-si-amount">↕</span></th>
+              <th>Notes</th>
+              <th style="width:70px">Actions</th>
+            </tr></thead>
+            <tbody id="fs-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="total-footer" id="fs-total-footer" style="display:none">
+        <span class="total-footer-label">TOTAL</span>
+        <div style="display:flex;gap:18px;align-items:center">
+          <span style="font-family:'DM Mono',monospace;font-size:12px;color:var(--red)">Exp: <span id="fs-total-exp">₹0</span></span>
+          <span style="font-family:'DM Mono',monospace;font-size:12px;color:var(--green)">Inc: <span id="fs-total-inc">₹0</span></span>
+          <span class="total-footer-amt" id="fs-total-net" style="font-size:14px"></span>
+        </div>
+      </div>
+    </div>
+
     <!-- ─── EARNINGS ──────────────────────────── -->
     <div class="view" id="view-earnings">
       <div class="mb16" style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
-        <input type="text" id="earn-search" placeholder="🔍 Search description, notes…" oninput="renderEarnings()" style="background:var(--surface);border:1px solid var(--border);color:var(--text);padding:7px 12px;border-radius:8px;font-family:'Syne',sans-serif;font-size:12px;outline:none;width:220px;">
+        <input type="text" id="earn-search" placeholder="🔍 Search description, notes…" oninput="renderEarnings()" style="background:var(--surface);border:1px solid var(--border);color:var(--text);padding:7px 12px;border-radius:8px;font-family:'Inter',sans-serif;font-size:12px;outline:none;width:220px;">
         <select class="btn btn-ghost" id="earn-month-f" onchange="renderEarnings()" style="font-size:12px;padding:7px 12px"><option value="">All Months</option></select>
         <select class="btn btn-ghost" id="earn-cat-f" onchange="renderEarnings()" style="font-size:12px;padding:7px 12px"><option value="">All Categories</option></select>
         <select class="btn btn-ghost" id="earn-week-f" onchange="renderEarnings()" style="font-size:12px;padding:7px 12px">
@@ -1147,7 +1233,7 @@ svg.sparkline { overflow: visible; }
         <div class="card-body">
           <div class="new-cat-row">
             <input id="new-cat-name" type="text" placeholder="Category name e.g. IRRIGATION"
-              style="background:var(--surface);border:1px solid var(--border);color:var(--text);padding:9px 14px;border-radius:8px;font-family:'Syne',sans-serif;font-size:13px;outline:none;width:220px;"
+              style="background:var(--surface);border:1px solid var(--border);color:var(--text);padding:9px 14px;border-radius:8px;font-family:'Inter',sans-serif;font-size:13px;outline:none;width:220px;"
               onkeydown="if(event.key==='Enter')addCategory()"/>
             <div class="color-picker-wrap" id="cat-color-picker"></div>
             <button class="btn btn-primary" onclick="addCategory()">＋ Add Category</button>
@@ -1166,7 +1252,7 @@ svg.sparkline { overflow: visible; }
 <div class="overlay" id="overlay">
   <div class="modal">
     <h3 id="modal-title">Add New Entry</h3>
-    <div id="edit-badge" style="display:none;margin-bottom:14px;padding:6px 12px;background:rgba(196,168,232,0.12);border:1px solid rgba(196,168,232,0.3);border-radius:8px;font-size:11px;color:var(--sky);font-family:'JetBrains Mono',monospace;">✏️ EDITING EXISTING ENTRY</div>
+    <div id="edit-badge" style="display:none;margin-bottom:14px;padding:6px 12px;background:rgba(196,168,232,0.12);border:1px solid rgba(196,168,232,0.3);border-radius:8px;font-size:11px;color:var(--sky);font-family:'DM Mono',monospace;">✏️ EDITING EXISTING ENTRY</div>
     <div class="form-grid">
       <div class="fg"><label>Type</label>
         <select id="f-type" onchange="toggleType()">
@@ -1186,7 +1272,7 @@ svg.sparkline { overflow: visible; }
 
       <!-- Calendar picker — shown when multi-day is checked -->
       <div class="fg full" id="f-calendar-wrap" style="display:none">
-        <label>Select Dates <span id="cal-hint" style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted);font-weight:400;margin-left:6px;">click to toggle days</span></label>
+        <label>Select Dates <span id="cal-hint" style="font-family:'DM Mono',monospace;font-size:9px;color:var(--muted);font-weight:400;margin-left:6px;">click to toggle days</span></label>
         <div class="cal-wrap">
           <div class="cal-nav">
             <button type="button" class="cal-nav-btn" onclick="calPrevMonth()">‹</button>
@@ -1207,36 +1293,36 @@ svg.sparkline { overflow: visible; }
       <!-- Earning: Sale Category dropdown -->
       <div class="fg" id="f-src-wrap" style="display:none">
         <label>Sale Category</label>
-        <select id="f-src" onchange="onEarnCatChange()" style="background:var(--surface);border:1px solid var(--border);color:var(--text);padding:9px 12px;border-radius:8px;font-family:'Syne',sans-serif;font-size:13px;outline:none;width:100%;"></select>
+        <select id="f-src" onchange="onEarnCatChange()" style="background:var(--surface);border:1px solid var(--border);color:var(--text);padding:9px 12px;border-radius:8px;font-family:'Inter',sans-serif;font-size:13px;outline:none;width:100%;"></select>
       </div>
 
       <!-- Earning: Sale Sub-item dropdown (shown after category selected) -->
       <div class="fg" id="f-earn-sub-wrap" style="display:none">
         <label>Item</label>
-        <select id="f-earn-sub" style="background:var(--surface);border:1px solid var(--border);color:var(--text);padding:9px 12px;border-radius:8px;font-family:'Syne',sans-serif;font-size:13px;outline:none;width:100%;"></select>
+        <select id="f-earn-sub" style="background:var(--surface);border:1px solid var(--border);color:var(--text);padding:9px 12px;border-radius:8px;font-family:'Inter',sans-serif;font-size:13px;outline:none;width:100%;"></select>
       </div>
 
       <!-- Sub-item dropdown — appears when category has sub-items -->
       <div class="fg full" id="f-sub-wrap" style="display:none">
         <label id="f-sub-label">Sub-item</label>
         <div style="display:flex;gap:8px;align-items:stretch">
-          <select id="f-sub-name" style="flex:1;background:var(--surface);border:1px solid var(--border);color:var(--text);padding:9px 12px;border-radius:8px;font-family:'Syne',sans-serif;font-size:13px;outline:none;"></select>
+          <select id="f-sub-name" style="flex:1;background:var(--surface);border:1px solid var(--border);color:var(--text);padding:9px 12px;border-radius:8px;font-family:'Inter',sans-serif;font-size:13px;outline:none;"></select>
           <button type="button" onclick="openAddSubPanel()" title="Add new sub-item"
             style="padding:0 14px;background:rgba(253,188,180,0.12);border:1px solid rgba(253,188,180,0.3);color:var(--accent);border-radius:8px;font-size:18px;cursor:pointer;flex-shrink:0;"
             onmouseover="this.style.background='rgba(253,188,180,0.22)'" onmouseout="this.style.background='rgba(253,188,180,0.12)'">＋</button>
         </div>
         <div id="add-sub-panel" style="display:none;margin-top:8px;padding:12px;background:var(--surface);border:1px solid rgba(253,188,180,0.25);border-radius:8px;">
-          <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;" id="add-sub-panel-label">Add New Sub-item</div>
+          <div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;" id="add-sub-panel-label">Add New Sub-item</div>
           <div style="display:flex;gap:8px;">
             <input type="text" id="new-sub-input" placeholder="Enter name…" class="sub-add-input" onkeydown="if(event.key==='Enter')saveNewSub()"/>
-            <button type="button" onclick="saveNewSub()" style="padding:8px 14px;background:var(--accent);color:#0A0A0A;border:none;border-radius:8px;font-family:'Syne',sans-serif;font-size:12px;font-weight:700;cursor:pointer;">Save</button>
+            <button type="button" onclick="saveNewSub()" style="padding:8px 14px;background:var(--accent);color:#0A0A0A;border:none;border-radius:8px;font-family:'Inter',sans-serif;font-size:12px;font-weight:700;cursor:pointer;">Save</button>
             <button type="button" onclick="closeAddSubPanel()" style="padding:8px 12px;background:transparent;color:var(--muted);border:1px solid var(--border);border-radius:8px;font-size:12px;cursor:pointer;">✕</button>
           </div>
         </div>
       </div>
 
       <div class="fg"><label>Week</label>
-        <div id="f-week-display" style="background:var(--surface);border:1px solid var(--border);color:var(--muted);padding:9px 14px;border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:13px;cursor:not-allowed;opacity:0.7;">—</div>
+        <div id="f-week-display" style="background:var(--surface);border:1px solid var(--border);color:var(--muted);padding:9px 14px;border-radius:8px;font-family:'DM Mono',monospace;font-size:13px;cursor:not-allowed;opacity:0.7;">—</div>
         <input type="hidden" id="f-week" value="Week1">
       </div>
       <div class="fg"><label>Amount (₹)</label><input type="number" id="f-amount" placeholder="0"></div>
@@ -1280,8 +1366,8 @@ svg.sparkline { overflow: visible; }
       </div>
     </div>
 
-    <div id="import-preview" style="display:none;margin-top:14px;padding:12px;background:var(--surface);border:1px solid var(--border);border-radius:8px;max-height:180px;overflow-y:auto;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);line-height:1.9;"></div>
-    <div id="import-status" style="margin-top:10px;font-size:12px;font-family:'JetBrains Mono',monospace;color:var(--accent);min-height:18px;"></div>
+    <div id="import-preview" style="display:none;margin-top:14px;padding:12px;background:var(--surface);border:1px solid var(--border);border-radius:8px;max-height:180px;overflow-y:auto;font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);line-height:1.9;"></div>
+    <div id="import-status" style="margin-top:10px;font-size:12px;font-family:'DM Mono',monospace;color:var(--accent);min-height:18px;"></div>
 
     <div class="modal-footer">
       <button class="btn btn-ghost" onclick="closeImportModal()">Cancel</button>
@@ -1300,7 +1386,7 @@ svg.sparkline { overflow: visible; }
 
     <!-- Create new user -->
     <div style="border-top:1px solid var(--border);padding-top:16px;flex-shrink:0;">
-      <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:12px;">Create New User</div>
+      <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:12px;">Create New User</div>
       <div class="form-grid">
         <div class="fg">
           <label>Full Name</label>
@@ -1316,13 +1402,13 @@ svg.sparkline { overflow: visible; }
         </div>
         <div class="fg">
           <label>Role</label>
-          <select id="nu-role" style="background:var(--surface2,#1E1E1E);border:1px solid var(--border);border-radius:8px;padding:10px 12px;color:var(--text);font-family:'JetBrains Mono',monospace;font-size:12px;width:100%;">
+          <select id="nu-role" style="background:var(--surface2,#1E1E1E);border:1px solid var(--border);border-radius:8px;padding:10px 12px;color:var(--text);font-family:'DM Mono',monospace;font-size:12px;width:100%;">
             <option value="admin">Admin (full access)</option>
             <option value="readonly" selected>Read Only (view only)</option>
           </select>
         </div>
       </div>
-      <div id="nu-msg" style="font-family:'JetBrains Mono',monospace;font-size:11px;min-height:16px;margin:8px 0;"></div>
+      <div id="nu-msg" style="font-family:'DM Mono',monospace;font-size:11px;min-height:16px;margin:8px 0;"></div>
     </div>
 
     <div class="modal-footer" style="flex-shrink:0;">
@@ -1378,6 +1464,10 @@ const EARNING_CAT_KEYWORDS = ['SALE - BHOKAR', 'SALE - PUNE', 'SALE INCOME', 'SA
 
 /* ─── State ─────────────────────────────────────── */
 let entries    = [];
+let fsEntries  = []; // Farmstay entries (separate table: farmstay_entries)
+let fsSortCol  = 'date';
+let fsSortDir  = 'desc';
+let fsEditingId = null; // row being inline-edited
 let categories = []; // [{id, name, color}] from DB
 let subItems   = []; // [{id, category_id, name}] from DB
 let activeView = 'dashboard';
@@ -1401,7 +1491,7 @@ function setLoading(on,msg='Syncing…') {
     let el=document.getElementById(id);
     if(!el){ el=document.createElement('div'); el.id=id; document.body.appendChild(el); }
     if(id==='loading-bar') el.style.cssText=`position:fixed;top:0;left:0;right:0;z-index:999;background:var(--accent);height:3px;transition:opacity 0.3s;`;
-    else el.style.cssText=`position:fixed;top:6px;right:20px;z-index:1000;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--accent);background:var(--surface);padding:4px 10px;border-radius:6px;border:1px solid var(--border);transition:opacity 0.3s;`;
+    else el.style.cssText=`position:fixed;top:6px;right:20px;z-index:1000;font-family:'DM Mono',monospace;font-size:10px;color:var(--accent);background:var(--surface);padding:4px 10px;border-radius:6px;border:1px solid var(--border);transition:opacity 0.3s;`;
     el.style.opacity = on?'1':'0';
   });
   const lb=document.getElementById('loading-label'); if(lb) lb.textContent=msg;
@@ -1510,7 +1600,7 @@ async function deleteSubItem(id) {
 
 /* ─── DB: Entries ────────────────────────────────── */
 function toLocal(r) {
-  return { id:r.id, type:r.type, date:r.date, desc:r.description, month:r.month, week:r.week,
+  return { id:Number(r.id), type:r.type, date:r.date, desc:r.description, month:r.month, week:r.week,
     cat:r.category, subItem:r.source||'', amount:Number(r.amount), notes:r.notes||'' };
 }
 function toRemote(e) {
@@ -1610,7 +1700,7 @@ function catSubCell(e) {
     ? `<span class="badge" style="background:${color}22;color:${color}">${e.cat}</span>`
     : '';
   const sub = e.subItem
-    ? `<span style="font-size:10px;color:var(--sky);font-family:'JetBrains Mono',monospace;margin-left:5px;white-space:nowrap;">▸ ${e.subItem}</span>`
+    ? `<span style="font-size:10px;color:var(--sky);font-family:'DM Mono',monospace;margin-left:5px;white-space:nowrap;">▸ ${e.subItem}</span>`
     : '';
   return `<div style="display:flex;align-items:center;flex-wrap:wrap;gap:2px">${catBadge}${sub}</div>`;
 }
@@ -1638,6 +1728,7 @@ function closeSidebar() {
 function nav(el) {
   const view = el.dataset.view;
   if (view === 'manage' && isReadOnly()) { toast('🔒 Manage Categories is not available in read-only mode'); return; }
+  if ((view === 'ledger' || view === 'farmstay') && isReadOnly()) { toast('🔒 This page is not available in read-only mode'); return; }
   document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active')); el.classList.add('active');
   document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
   document.getElementById('view-'+view).classList.add('active');
@@ -1654,6 +1745,8 @@ function refreshView(view){
   else if(view==='catview') renderCatView();
   else if(view==='weekly') renderWeekly();
   else if(view==='manage') renderManage();
+  else if(view==='ledger') { loadLdEntries(); }
+  else if(view==='farmstay') { loadFsEntries(); }
 }
 
 /* ─── Category helpers ───────────────────────────── */
@@ -1956,6 +2049,7 @@ function toggleType() {
 
 async function saveEntry() {
   if (isReadOnly()) { toast('🔒 Read-only access — cannot save entries'); return; }
+  const type=document.getElementById('f-type').value;
   const date=document.getElementById('f-date').value;
   const desc=document.getElementById('f-desc').value.trim();
   const amount=parseFloat(document.getElementById('f-amount').value)||0;
@@ -2022,12 +2116,12 @@ function drawTrendChart() {
   const maxV=Math.max(...expD,...earnD,1);
   const pad={l:44,r:12,t:10,b:30},cW=W-pad.l-pad.r,cH=H-pad.t-pad.b,step=usedM.length>1?cW/(usedM.length-1):cW;
   ctx.strokeStyle='rgba(255,255,255,0.05)'; ctx.lineWidth=1;
-  for(let i=0;i<=4;i++){ const y=pad.t+cH*(1-i/4); ctx.beginPath(); ctx.moveTo(pad.l,y); ctx.lineTo(W-pad.r,y); ctx.stroke(); ctx.fillStyle='rgba(255,255,255,0.2)'; ctx.font='9px JetBrains Mono,monospace'; ctx.textAlign='right'; ctx.fillText(fmt(maxV*i/4),pad.l-4,y+3); }
-  ctx.fillStyle='rgba(255,255,255,0.3)'; ctx.font='9px JetBrains Mono,monospace'; ctx.textAlign='center';
+  for(let i=0;i<=4;i++){ const y=pad.t+cH*(1-i/4); ctx.beginPath(); ctx.moveTo(pad.l,y); ctx.lineTo(W-pad.r,y); ctx.stroke(); ctx.fillStyle='rgba(255,255,255,0.2)'; ctx.font='9px DM Mono,monospace'; ctx.textAlign='right'; ctx.fillText(fmt(maxV*i/4),pad.l-4,y+3); }
+  ctx.fillStyle='rgba(255,255,255,0.3)'; ctx.font='9px DM Mono,monospace'; ctx.textAlign='center';
   usedM.forEach((m,i)=>{ const x=pad.l+i*step,idx=MONTHS.indexOf(m); ctx.fillText(MONTHS_SHORT[idx]||m.slice(0,6),x,H-pad.b+14); });
   function dLine(data,color,fill){ const pts=data.map((v,i)=>[pad.l+i*(usedM.length>1?step:0),pad.t+cH*(1-v/maxV)]); ctx.beginPath(); ctx.moveTo(pts[0][0],pad.t+cH); pts.forEach(([x,y])=>ctx.lineTo(x,y)); ctx.lineTo(pts[pts.length-1][0],pad.t+cH); ctx.closePath(); ctx.fillStyle=fill; ctx.fill(); ctx.beginPath(); ctx.strokeStyle=color; ctx.lineWidth=2; ctx.lineJoin='round'; pts.forEach(([x,y],i)=>i===0?ctx.moveTo(x,y):ctx.lineTo(x,y)); ctx.stroke(); pts.forEach(([x,y])=>{ ctx.beginPath(); ctx.arc(x,y,3,0,Math.PI*2); ctx.fillStyle=color; ctx.fill(); }); }
   dLine(expD,'#E85A4A','rgba(232,74,74,0.08)'); dLine(earnD,'#A8D4A0','rgba(168,212,160,0.1)');
-  ctx.font='10px Syne,sans-serif'; ctx.textAlign='left';
+  ctx.font='10px Inter,sans-serif'; ctx.textAlign='left';
   ctx.fillStyle='#E85A4A'; ctx.fillRect(W-80,4,10,4); ctx.fillText('Expenses',W-66,9);
   ctx.fillStyle='#A8D4A0'; ctx.fillRect(W-80,16,10,4); ctx.fillText('Earnings',W-66,21);
 }
@@ -2043,8 +2137,8 @@ function drawDonut() {
   let angle=-Math.PI/2;
   totals.forEach(({color,val})=>{ const sweep=(val/total)*Math.PI*2; ctx.beginPath(); ctx.moveTo(cx,cy); ctx.arc(cx,cy,R,angle,angle+sweep); ctx.closePath(); ctx.fillStyle=color; ctx.fill(); angle+=sweep; });
   ctx.beginPath(); ctx.arc(cx,cy,r,0,Math.PI*2); ctx.fillStyle='#0A0A0A'; ctx.fill();
-  ctx.fillStyle='rgba(255,255,255,0.5)'; ctx.font='bold 9px JetBrains Mono,monospace'; ctx.textAlign='center'; ctx.fillText('TOTAL',cx,cy-3);
-  ctx.font='bold 11px Syne,sans-serif'; ctx.fillStyle='#F5EDE9'; ctx.fillText(fmt(total),cx,cy+10);
+  ctx.fillStyle='rgba(255,255,255,0.5)'; ctx.font='bold 9px DM Mono,monospace'; ctx.textAlign='center'; ctx.fillText('TOTAL',cx,cy-3);
+  ctx.font='bold 11px Inter,sans-serif'; ctx.fillStyle='#F5EDE9'; ctx.fillText(fmt(total),cx,cy+10);
   document.getElementById('donut-legend').innerHTML=totals.sort((a,b)=>b.val-a.val).map(({cat,color,val})=>`<div class="dl-item"><div class="dl-dot" style="background:${color}"></div><span class="dl-name">${cat.split('/')[0]}</span><span class="dl-pct">${fmt(val)}</span></div>`).join('');
 }
 
@@ -2059,8 +2153,8 @@ function drawEarnDonut() {
   let angle=-Math.PI/2;
   totals.forEach(({color,val})=>{ const sweep=(val/total)*Math.PI*2; ctx.beginPath(); ctx.moveTo(cx,cy); ctx.arc(cx,cy,R,angle,angle+sweep); ctx.closePath(); ctx.fillStyle=color; ctx.fill(); angle+=sweep; });
   ctx.beginPath(); ctx.arc(cx,cy,r,0,Math.PI*2); ctx.fillStyle='#0A0A0A'; ctx.fill();
-  ctx.fillStyle='rgba(255,255,255,0.5)'; ctx.font='bold 9px JetBrains Mono,monospace'; ctx.textAlign='center'; ctx.fillText('TOTAL',cx,cy-3);
-  ctx.font='bold 11px Syne,sans-serif'; ctx.fillStyle='#F5EDE9'; ctx.fillText(fmt(total),cx,cy+10);
+  ctx.fillStyle='rgba(255,255,255,0.5)'; ctx.font='bold 9px DM Mono,monospace'; ctx.textAlign='center'; ctx.fillText('TOTAL',cx,cy-3);
+  ctx.font='bold 11px Inter,sans-serif'; ctx.fillStyle='#F5EDE9'; ctx.fillText(fmt(total),cx,cy+10);
   document.getElementById('earn-donut-legend').innerHTML=totals.sort((a,b)=>b.val-a.val).map(({cat,color,val})=>`<div class="dl-item"><div class="dl-dot" style="background:${color}"></div><span class="dl-name">${cat}</span><span class="dl-pct">${fmt(val)}</span></div>`).join('');
 }
 
@@ -2154,7 +2248,7 @@ function renderExpenses() {
     <td style="color:var(--muted);font-size:11px">${e.month}</td>
     <td style="color:var(--muted);font-size:11px">${e.week||'—'}</td>
     <td><span class="badge" style="background:${catColor(e.cat)}22;color:${catColor(e.cat)}">${e.cat||'—'}</span></td>
-    <td style="color:var(--sky);font-size:11px;font-family:'JetBrains Mono',monospace">${e.subItem||'—'}</td>
+    <td style="color:var(--sky);font-size:11px;font-family:'DM Mono',monospace">${e.subItem||'—'}</td>
     <td class="amount-exp">-${fmt(e.amount)}</td>
     <td style="color:var(--muted);font-size:11px;max-width:140px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis" title="${e.notes||''}">${e.notes||'—'}</td>
     ${isReadOnly() ? '' : `<td><div class="action-btns"><button class="btn btn-edit btn-sm" onclick="openEditModal(${e.id})">✏️</button><button class="btn btn-danger btn-sm" onclick="deleteEntry(${e.id})">✕</button></div></td>`}
@@ -2250,7 +2344,7 @@ function renderEarnings() {
     <td style="color:var(--muted);font-size:11px">${e.month}</td>
     <td style="color:var(--muted);font-size:11px">${e.week||'—'}</td>
     <td><span class="badge" style="background:${catColor(e.cat)}22;color:${catColor(e.cat)}">${e.cat||'—'}</span></td>
-    <td style="color:var(--sky);font-size:11px;font-family:'JetBrains Mono',monospace">${e.subItem||'—'}</td>
+    <td style="color:var(--sky);font-size:11px;font-family:'DM Mono',monospace">${e.subItem||'—'}</td>
     <td class="amount-earn">+${fmt(e.amount)}</td>
     <td style="color:var(--muted);font-size:11px;max-width:140px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis" title="${e.notes||''}">${e.notes||'—'}</td>
     ${isReadOnly() ? '' : `<td><div class="action-btns"><button class="btn btn-edit btn-sm" onclick="openEditModal(${e.id})">✏️</button><button class="btn btn-danger btn-sm" onclick="deleteEntry(${e.id})">✕</button></div></td>`}
@@ -2352,12 +2446,12 @@ function renderWeekly() {
     const val=weekTotal('expense',weekSelectedMonth,w);
     const range=weekDateRange(weekSelectedMonth, i+1);
     const catBreak=categories.filter(isExpenseCat).map(c=>{ const v=entries.filter(e=>e.type==='expense'&&e.month===weekSelectedMonth&&e.week===w&&e.cat===c.name).reduce((s,e)=>s+e.amount,0); return v?`<div style="font-size:10px;color:var(--muted);margin-top:4px">${c.name.split('/')[0]}: ${fmt(v)}</div>`:''; }).join('');
-    return `<div class="week-cell"><div class="week-label">${w}</div><div style="font-size:9px;color:var(--muted);font-family:'JetBrains Mono',monospace;margin-bottom:4px;letter-spacing:0.3px">${range}</div><div class="week-exp">${val?fmt(val):'—'}</div>${catBreak}</div>`;
+    return `<div class="week-cell"><div class="week-label">${w}</div><div style="font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;margin-bottom:4px;letter-spacing:0.3px">${range}</div><div class="week-exp">${val?fmt(val):'—'}</div>${catBreak}</div>`;
   }).join('');
   document.getElementById('week-earn-grid').innerHTML=weeks.map((w,i)=>{
     const val=weekTotal('earning',weekSelectedMonth,w);
     const range=weekDateRange(weekSelectedMonth, i+1);
-    return `<div class="week-cell"><div class="week-label">${w}</div><div style="font-size:9px;color:var(--muted);font-family:'JetBrains Mono',monospace;margin-bottom:4px;letter-spacing:0.3px">${range}</div><div class="week-earn">${val?fmt(val):'—'}</div></div>`;
+    return `<div class="week-cell"><div class="week-label">${w}</div><div style="font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;margin-bottom:4px;letter-spacing:0.3px">${range}</div><div class="week-earn">${val?fmt(val):'—'}</div></div>`;
   }).join('');
 }
 function weekSetMonth(m){ weekSelectedMonth=m; renderWeekly(); }
@@ -2379,7 +2473,7 @@ function renderManage() {
       <div class="cat-manage-header">
         <div class="cat-manage-name"><div class="cat-color-dot" style="background:${cat.color}"></div>${cat.name}</div>
         <div class="cat-manage-actions">
-          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);margin-right:6px">${subs.length} sub-items</span>
+          <span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);margin-right:6px">${subs.length} sub-items</span>
           <button class="btn-icon btn-icon-del" onclick="deleteCategory(${cat.id})" title="Delete category">🗑</button>
         </div>
       </div>
@@ -2943,6 +3037,9 @@ function applyReadOnly(isRO) {
   if (navManage) navManage.style.display = isRO ? 'none' : '';
   const settingsItem = document.querySelector('[onclick*="manage"]');
   if (settingsItem) settingsItem.style.display = isRO ? 'none' : '';
+  ['nav-ledger','nav-farmstay'].forEach(id => {
+    const el = document.getElementById(id); if (el) el.style.display = isRO ? 'none' : '';
+  });
 }
 
 function isReadOnly() { return currentUserRole === 'readonly'; }
@@ -3037,6 +3134,527 @@ function unlockApp(session, isNewUser = false) {
   setUserMenuInfo(session);
   if (isNewUser) { location.reload(); return; }
   if (typeof loadAll === 'function') loadAll();
+}
+
+
+/* ══════════════════════════════════════════════════
+   ACCOUNTS VIEW
+══════════════════════════════════════════════════ */
+/* ══════════════════════════════════════════════════
+   LEDGER VIEW  — inline Excel-like rows
+══════════════════════════════════════════════════ */
+const LD_CATEGORIES = ['Sales','Purchases','Labour','Equipment','Seeds','Feed','Transport','Utilities','Maintenance','Loan','Investment','Tax','Other'];
+
+let ldEntries  = [];
+let ldSortCol  = 'date';
+let ldSortDir  = 'desc';
+let ldEditingId = null;
+
+async function loadLdEntries() {
+  setLoading(true,'Loading ledger…');
+  try {
+    const rows = await sbFetch('ledger_entries?select=*&order=date.desc,created_at.desc');
+    ldEntries = rows.map(r=>({
+      id:r.id, date:r.date, desc:r.description||'', month:r.month||'',
+      ld_type:r.ld_type||'credit', category:r.category||'',
+      amount:Number(r.amount)||0, reference:r.reference||'', notes:r.notes||''
+    }));
+    renderLedger();
+    populateLdMonthFilter();
+  } catch(e) {
+    toastErr('Ledger load failed: '+e.message);
+    ldEntries = [];
+    renderLedger();
+  } finally { setLoading(false); }
+}
+
+function populateLdMonthFilter() {
+  const sel = document.getElementById('ld-month-f');
+  if(!sel) return;
+  const cur = sel.value;
+  sel.innerHTML = '<option value="">All Months</option>';
+  const mi = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const used = [...new Set(ldEntries.map(e=>e.month))].filter(Boolean);
+  used.sort((a,b)=>{ const [ma,ya]=a.split(' '); const [mb,yb]=b.split(' '); return Number(ya)-Number(yb)||mi.indexOf(ma)-mi.indexOf(mb); });
+  used.forEach(m=>{ const o=document.createElement('option'); o.value=m; o.textContent=m; sel.appendChild(o); });
+  if(cur) sel.value=cur;
+}
+
+function ldSortBy(col) {
+  if(ldSortCol===col) ldSortDir = ldSortDir==='asc'?'desc':'asc';
+  else { ldSortCol=col; ldSortDir=col==='amount'?'desc':'asc'; }
+  renderLedger();
+}
+
+function renderLedger() {
+  const mf = (document.getElementById('ld-month-f')||{}).value||'';
+  const tf = (document.getElementById('ld-type-f')||{}).value||'';
+  const sf = ((document.getElementById('ld-search')||{}).value||'').toLowerCase().trim();
+  let rows = [...ldEntries];
+  if(mf) rows = rows.filter(e=>e.month===mf);
+  if(tf) rows = rows.filter(e=>e.ld_type===tf);
+  if(sf) rows = rows.filter(e=>
+    (e.desc||'').toLowerCase().includes(sf)||
+    (e.category||'').toLowerCase().includes(sf)||
+    (e.reference||'').toLowerCase().includes(sf)||
+    (e.notes||'').toLowerCase().includes(sf)
+  );
+
+  // Sort
+  rows.sort((a,b)=>{
+    let av, bv;
+    if(ldSortCol==='amount'){av=Number(a.amount);bv=Number(b.amount);}
+    else{av=String(a[ldSortCol]||'').toLowerCase();bv=String(b[ldSortCol]||'').toLowerCase();}
+    return ldSortDir==='asc'?(av>bv?1:av<bv?-1:0):(av<bv?1:av>bv?-1:0);
+  });
+
+  // Sort icons
+  ['date','month','amount'].forEach(col=>{
+    const el=document.getElementById('ld-si-'+col);
+    if(el) el.textContent = ldSortCol===col?(ldSortDir==='asc'?'↑':'↓'):'↕';
+  });
+
+  document.getElementById('ld-count').textContent=`${rows.length} entr${rows.length===1?'y':'ies'}`;
+  const tbody = document.getElementById('ld-tbody');
+  if(!rows.length){
+    tbody.innerHTML=`<tr><td colspan="10" class="empty">No ledger entries. Click "＋ Add Row".</td></tr>`;
+    document.getElementById('ld-total-footer').style.display='none';
+    return;
+  }
+
+  tbody.innerHTML = rows.map(e=>{
+    if(ldEditingId===e.id) return ldEditRowHTML(e);
+    const isCredit = e.ld_type==='credit';
+    return `<tr id="ld-row-${e.id}">
+      <td style="text-align:center;color:var(--muted);font-size:11px">${isCredit?'▲':'▼'}</td>
+      <td class="amount-mono" style="font-size:12px;color:var(--muted);white-space:nowrap">${e.date}</td>
+      <td style="font-size:13px">${e.desc||'—'}</td>
+      <td style="font-size:11px;color:var(--muted);white-space:nowrap">${e.month}</td>
+      <td><span class="ld-type-${e.ld_type}">${isCredit?'CREDIT':'DEBIT'}</span></td>
+      <td style="font-size:11px;color:var(--sky)">${e.category||'—'}</td>
+      <td class="ld-amt-${e.ld_type}">${isCredit?'+':'-'}${fmt(e.amount)}</td>
+      <td style="font-size:11px;color:var(--muted)">${e.reference||'—'}</td>
+      <td style="font-size:11px;color:var(--muted);max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${e.notes}">${e.notes||'—'}</td>
+      <td>${isReadOnly()?'':`<div class="action-btns"><button class="btn btn-edit btn-sm" onclick="ldStartEdit(${e.id})">✏️</button><button class="btn btn-danger btn-sm" onclick="ldDelete(${e.id})">✕</button></div>`}</td>
+    </tr>`;
+  }).join('');
+
+  // Totals — based on ALL filtered entries (not just current sort page)
+  const visibleIds = new Set(rows.map(e=>e.id));
+  const visRows = ldEntries.filter(e=>visibleIds.has(e.id));
+  const totalCredit = visRows.filter(e=>e.ld_type==='credit').reduce((s,e)=>s+e.amount,0);
+  const totalDebit  = visRows.filter(e=>e.ld_type==='debit').reduce((s,e)=>s+e.amount,0);
+  const balance = totalCredit - totalDebit;
+  document.getElementById('ld-total-credit').textContent = fmt(totalCredit);
+  document.getElementById('ld-total-debit').textContent  = fmt(totalDebit);
+  const balEl = document.getElementById('ld-total-balance');
+  balEl.textContent = fmtSigned(balance);
+  balEl.className = 'total-footer-amt ' + (balance>=0?'total-footer-earn':'total-footer-exp');
+  document.getElementById('ld-total-footer').style.display = '';
+}
+
+function ldEditRowHTML(e) {
+  const catOpts = LD_CATEGORIES.map(c=>`<option value="${c}" ${e.category===c?'selected':''}>${c}</option>`).join('');
+  return `<tr id="ld-row-${e.id}" class="ld-row-editing">
+    <td></td>
+    <td><input class="ld-cell-input" id="lde-date-${e.id}" type="date" value="${e.date}" onchange="ldAutoMonth(${e.id})"></td>
+    <td><input class="ld-cell-input" id="lde-desc-${e.id}" type="text" value="${e.desc}" placeholder="Description"></td>
+    <td><input class="ld-cell-input" id="lde-month-${e.id}" type="text" value="${e.month}" placeholder="Month" readonly style="width:100px"></td>
+    <td><select class="ld-cell-input" id="lde-type-${e.id}">
+      <option value="credit" ${e.ld_type==='credit'?'selected':''}>Credit</option>
+      <option value="debit"  ${e.ld_type==='debit' ?'selected':''}>Debit</option>
+    </select></td>
+    <td><select class="ld-cell-input" id="lde-cat-${e.id}">${catOpts}</select></td>
+    <td><input class="ld-cell-input ld-amount" id="lde-amt-${e.id}" type="number" value="${e.amount}" min="0" placeholder="0"></td>
+    <td><input class="ld-cell-input" id="lde-ref-${e.id}" type="text" value="${e.reference}" placeholder="Ref / Cheque no."></td>
+    <td><input class="ld-cell-input" id="lde-notes-${e.id}" type="text" value="${e.notes}" placeholder="Notes"></td>
+    <td style="white-space:nowrap">
+      <button class="ld-save-btn" onclick="ldSaveEdit(${e.id})">Save</button>
+      <button class="ld-del-btn" onclick="ldCancelEdit()" style="margin-left:4px">✕</button>
+    </td>
+  </tr>`;
+}
+
+function ldNewRowHTML() {
+  const today = new Date().toISOString().slice(0,10);
+  const defMonth = autoMonth(today);
+  const catOpts = LD_CATEGORIES.map(c=>`<option value="${c}">${c}</option>`).join('');
+  return `<tr id="ld-row-new" class="ld-row-editing">
+    <td></td>
+    <td><input class="ld-cell-input" id="lde-date-new" type="date" value="${today}" onchange="ldAutoMonthNew()"></td>
+    <td><input class="ld-cell-input" id="lde-desc-new" type="text" placeholder="Description" autofocus></td>
+    <td><input class="ld-cell-input" id="lde-month-new" type="text" value="${defMonth}" placeholder="Month" readonly style="width:100px"></td>
+    <td><select class="ld-cell-input" id="lde-type-new">
+      <option value="credit">Credit</option>
+      <option value="debit">Debit</option>
+    </select></td>
+    <td><select class="ld-cell-input" id="lde-cat-new">${catOpts}</select></td>
+    <td><input class="ld-cell-input ld-amount" id="lde-amt-new" type="number" placeholder="0" min="0"></td>
+    <td><input class="ld-cell-input" id="lde-ref-new" type="text" placeholder="Ref / Cheque no."></td>
+    <td><input class="ld-cell-input" id="lde-notes-new" type="text" placeholder="Notes"></td>
+    <td style="white-space:nowrap">
+      <button class="ld-save-btn" onclick="ldSaveNew()">Save</button>
+      <button class="ld-del-btn" onclick="ldCancelNew()" style="margin-left:4px">✕</button>
+    </td>
+  </tr>`;
+}
+
+function ldAutoMonth(id) {
+  const d = document.getElementById('lde-date-'+id).value;
+  if(d) document.getElementById('lde-month-'+id).value = autoMonth(d);
+}
+function ldAutoMonthNew() {
+  const d = document.getElementById('lde-date-new').value;
+  if(d) document.getElementById('lde-month-new').value = autoMonth(d);
+}
+
+function ldAddRow() {
+  if(isReadOnly()){ toast('🔒 Read-only mode'); return; }
+  ldCancelNew(); ldCancelEdit();
+  const tbody = document.getElementById('ld-tbody');
+  // If empty state row exists, clear it first
+  if(tbody.querySelector('.empty')) tbody.innerHTML='';
+  tbody.insertAdjacentHTML('afterbegin', ldNewRowHTML());
+  document.getElementById('ld-total-footer').style.display='none';
+  setTimeout(()=>{ const el=document.getElementById('lde-desc-new'); if(el) el.focus(); },50);
+}
+
+function ldCancelNew() {
+  const row = document.getElementById('ld-row-new');
+  if(row) row.remove();
+}
+
+async function ldSaveNew() {
+  if(isReadOnly()) return;
+  const date  = document.getElementById('lde-date-new').value;
+  const desc  = document.getElementById('lde-desc-new').value.trim();
+  const month = document.getElementById('lde-month-new').value || autoMonth(date);
+  const ld_type   = document.getElementById('lde-type-new').value;
+  const category  = document.getElementById('lde-cat-new').value;
+  const amount    = parseFloat(document.getElementById('lde-amt-new').value)||0;
+  const reference = document.getElementById('lde-ref-new').value.trim();
+  const notes     = document.getElementById('lde-notes-new').value.trim();
+  if(!date){ toastErr('Date is required'); return; }
+  if(amount<=0){ toastErr('Amount must be greater than 0'); return; }
+
+  setLoading(true,'Saving…');
+  try {
+    const row = await sbFetch('ledger_entries',{method:'POST',body:JSON.stringify({
+      date, description:desc, month, ld_type, category, amount,
+      reference:reference||null, notes:notes||null
+    })});
+    const saved = Array.isArray(row)?row[0]:row;
+    ldEntries.unshift({
+      id:saved.id, date:saved.date, desc:saved.description||'',
+      month:saved.month||'', ld_type:saved.ld_type||'credit',
+      category:saved.category||'', amount:Number(saved.amount)||0,
+      reference:saved.reference||'', notes:saved.notes||''
+    });
+    ldCancelNew();
+    populateLdMonthFilter();
+    renderLedger();
+    toast('✅ Ledger entry saved');
+  } catch(e){ toastErr('Save failed: '+e.message); } finally { setLoading(false); }
+}
+
+function ldStartEdit(id) {
+  if(isReadOnly()){ toast('🔒 Read-only mode'); return; }
+  ldCancelNew(); ldCancelEdit();
+  ldEditingId = id;
+  renderLedger();
+  setTimeout(()=>{ const el=document.getElementById('lde-desc-'+id); if(el) el.focus(); },50);
+}
+
+function ldCancelEdit() {
+  if(!ldEditingId) return;
+  ldEditingId = null;
+  renderLedger();
+}
+
+async function ldSaveEdit(id) {
+  if(isReadOnly()) return;
+  const date      = document.getElementById('lde-date-'+id).value;
+  const desc      = document.getElementById('lde-desc-'+id).value.trim();
+  const month     = document.getElementById('lde-month-'+id).value || autoMonth(date);
+  const ld_type   = document.getElementById('lde-type-'+id).value;
+  const category  = document.getElementById('lde-cat-'+id).value;
+  const amount    = parseFloat(document.getElementById('lde-amt-'+id).value)||0;
+  const reference = document.getElementById('lde-ref-'+id).value.trim();
+  const notes     = document.getElementById('lde-notes-'+id).value.trim();
+  if(!date){ toastErr('Date is required'); return; }
+  if(amount<=0){ toastErr('Amount must be greater than 0'); return; }
+
+  setLoading(true,'Updating…');
+  try {
+    await sbFetch(`ledger_entries?id=eq.${id}`,{method:'PATCH',body:JSON.stringify({
+      date, description:desc, month, ld_type, category, amount,
+      reference:reference||null, notes:notes||null
+    })});
+    const idx = ldEntries.findIndex(e=>e.id===id);
+    if(idx!==-1) ldEntries[idx] = {id,date,desc,month,ld_type,category,amount,reference,notes};
+    ldEditingId = null;
+    populateLdMonthFilter();
+    renderLedger();
+    toast('✅ Updated');
+  } catch(e){ toastErr('Update failed: '+e.message); } finally { setLoading(false); }
+}
+
+async function ldDelete(id) {
+  if(isReadOnly()){ toast('🔒 Read-only mode'); return; }
+  if(!confirm('Delete this ledger entry?')) return;
+  setLoading(true,'Deleting…');
+  try {
+    await sbFetch(`ledger_entries?id=eq.${id}`,{method:'DELETE'});
+    ldEntries = ldEntries.filter(e=>e.id!==id);
+    populateLdMonthFilter();
+    renderLedger();
+    toast('🗑 Deleted');
+  } catch(e){ toastErr('Delete failed: '+e.message); } finally { setLoading(false); }
+}
+
+/* ══════════════════════════════════════════════════
+   FARMSTAY VIEW  — inline Excel-like rows
+══════════════════════════════════════════════════ */
+const FS_CATEGORIES = ['Accommodation','Food & Beverage','Activities','Maintenance','Utilities','Staff','Supplies','Marketing','Other'];
+
+async function loadFsEntries() {
+  setLoading(true,'Loading farmstay…');
+  try {
+    const rows = await sbFetch('farmstay_entries?select=*&order=date.desc,created_at.desc');
+    fsEntries = rows.map(r=>({
+      id:r.id, date:r.date, desc:r.description||'', month:r.month||'',
+      fs_type:r.fs_type||'income', category:r.category||'', amount:Number(r.amount)||0,
+      notes:r.notes||''
+    }));
+    renderFarmstay();
+    populateFsMonthFilter();
+  } catch(e) {
+    toastErr('Farmstay load failed: '+e.message);
+    fsEntries = [];
+    renderFarmstay();
+  } finally { setLoading(false); }
+}
+
+function populateFsMonthFilter() {
+  const sel = document.getElementById('fs-month-f');
+  const cur = sel.value;
+  sel.innerHTML = '<option value="">All Months</option>';
+  const used = [...new Set(fsEntries.map(e=>e.month))].filter(Boolean);
+  used.sort((a,b)=>{ const mi=['January','February','March','April','May','June','July','August','September','October','November','December']; const [ma,ya]=a.split(' '); const [mb,yb]=b.split(' '); return Number(ya)-Number(yb)||mi.indexOf(ma)-mi.indexOf(mb); });
+  used.forEach(m=>{ const o=document.createElement('option'); o.value=m; o.textContent=m; sel.appendChild(o); });
+  if(cur) sel.value=cur;
+}
+
+function fsSortBy(col) {
+  if(fsSortCol===col) fsSortDir = fsSortDir==='asc'?'desc':'asc';
+  else { fsSortCol=col; fsSortDir=col==='amount'?'desc':'asc'; }
+  renderFarmstay();
+}
+
+function renderFarmstay() {
+  const mf = document.getElementById('fs-month-f').value;
+  const tf = document.getElementById('fs-type-f').value;
+  let rows = [...fsEntries];
+  if(mf) rows = rows.filter(e=>e.month===mf);
+  if(tf) rows = rows.filter(e=>e.fs_type===tf);
+
+  // Sort
+  rows.sort((a,b)=>{
+    let av=a[fsSortCol==='date'?'date':fsSortCol==='month'?'month':'amount']??'';
+    let bv=b[fsSortCol==='date'?'date':fsSortCol==='month'?'month':'amount']??'';
+    if(fsSortCol==='amount'){av=Number(a.amount);bv=Number(b.amount);}
+    else{av=String(av).toLowerCase();bv=String(bv).toLowerCase();}
+    return fsSortDir==='asc'?(av>bv?1:av<bv?-1:0):(av<bv?1:av>bv?-1:0);
+  });
+
+  // Sort icons
+  ['date','month','amount'].forEach(col=>{
+    const el=document.getElementById('fs-si-'+col);
+    if(el) el.textContent = fsSortCol===col?(fsSortDir==='asc'?'↑':'↓'):'↕';
+  });
+
+  document.getElementById('fs-count').textContent=`${rows.length} entr${rows.length===1?'y':'ies'}`;
+  const tbody = document.getElementById('fs-tbody');
+
+  if(!rows.length) {
+    tbody.innerHTML=`<tr><td colspan="9" class="empty">No farmstay entries. Click "＋ Add Row".</td></tr>`;
+    document.getElementById('fs-total-footer').style.display='none';
+    return;
+  }
+
+  tbody.innerHTML = rows.map(e=>{
+    if(fsEditingId===e.id) return fsEditRowHTML(e);
+    const isInc = e.fs_type==='income';
+    return `<tr id="fs-row-${e.id}">
+      <td style="text-align:center;color:var(--muted);font-size:10px;font-family:'DM Mono',monospace">${isInc?'▲':'▼'}</td>
+      <td class="amount-mono" style="font-size:12px;color:var(--muted)">${e.date}</td>
+      <td style="font-size:13px">${e.desc||'—'}</td>
+      <td style="font-size:11px;color:var(--muted)">${e.month}</td>
+      <td><span class="fs-type-${e.fs_type}">${isInc?'INCOME':'EXPENSE'}</span></td>
+      <td style="font-size:11px;color:var(--sky)">${e.category||'—'}</td>
+      <td class="fs-amt-${e.fs_type}">${isInc?'+':'-'}${fmt(e.amount)}</td>
+      <td style="font-size:11px;color:var(--muted);max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${e.notes}">${e.notes||'—'}</td>
+      <td>${isReadOnly()?'':`<div class="action-btns"><button class="btn btn-edit btn-sm" onclick="fsStartEdit(${e.id})">✏️</button><button class="btn btn-danger btn-sm" onclick="fsDelete(${e.id})">✕</button></div>`}</td>
+    </tr>`;
+  }).join('');
+
+  // Totals
+  const allInc = fsEntries.filter(e=>e.fs_type==='income'&&(!mf||e.month===mf)).reduce((s,e)=>s+e.amount,0);
+  const allExp = fsEntries.filter(e=>e.fs_type==='expense'&&(!mf||e.month===mf)).reduce((s,e)=>s+e.amount,0);
+  const net = allInc - allExp;
+  document.getElementById('fs-total-inc').textContent = fmt(allInc);
+  document.getElementById('fs-total-exp').textContent = fmt(allExp);
+  const netEl = document.getElementById('fs-total-net');
+  netEl.textContent = fmtSigned(net);
+  netEl.className = 'total-footer-amt ' + (net>=0?'total-footer-earn':'total-footer-exp');
+  document.getElementById('fs-total-footer').style.display = '';
+}
+
+function fsEditRowHTML(e) {
+  const catOpts = FS_CATEGORIES.map(c=>`<option value="${c}" ${e.category===c?'selected':''}>${c}</option>`).join('');
+  return `<tr id="fs-row-${e.id}" class="fs-row-editing">
+    <td></td>
+    <td><input class="fs-cell-input" id="fse-date-${e.id}" type="date" value="${e.date}" onchange="fsAutoMonth(${e.id})"></td>
+    <td><input class="fs-cell-input" id="fse-desc-${e.id}" type="text" value="${e.desc}" placeholder="Description"></td>
+    <td><input class="fs-cell-input" id="fse-month-${e.id}" type="text" value="${e.month}" placeholder="Month" style="width:100px" readonly></td>
+    <td><select class="fs-cell-input fs-cell-select" id="fse-type-${e.id}">
+      <option value="income" ${e.fs_type==='income'?'selected':''}>Income</option>
+      <option value="expense" ${e.fs_type==='expense'?'selected':''}>Expense</option>
+    </select></td>
+    <td><select class="fs-cell-input fs-cell-select" id="fse-cat-${e.id}">${catOpts}</select></td>
+    <td><input class="fs-cell-input fs-amount" id="fse-amt-${e.id}" type="number" value="${e.amount}" min="0" placeholder="0"></td>
+    <td><input class="fs-cell-input" id="fse-notes-${e.id}" type="text" value="${e.notes}" placeholder="Notes"></td>
+    <td style="white-space:nowrap">
+      <button class="fs-save-btn" onclick="fsSaveEdit(${e.id})">Save</button>
+      <button class="fs-del-btn" onclick="fsCancelEdit(${e.id})" style="margin-left:4px">✕</button>
+    </td>
+  </tr>`;
+}
+
+function fsNewRowHTML() {
+  const today = new Date().toISOString().slice(0,10);
+  const catOpts = FS_CATEGORIES.map(c=>`<option value="${c}">${c}</option>`).join('');
+  const defMonth = autoMonth(today);
+  return `<tr id="fs-row-new" class="fs-row-new fs-row-editing">
+    <td></td>
+    <td><input class="fs-cell-input" id="fse-date-new" type="date" value="${today}" onchange="fsAutoMonthNew()"></td>
+    <td><input class="fs-cell-input" id="fse-desc-new" type="text" placeholder="Description" autofocus></td>
+    <td><input class="fs-cell-input" id="fse-month-new" type="text" value="${defMonth}" placeholder="Month" style="width:100px" readonly></td>
+    <td><select class="fs-cell-input fs-cell-select" id="fse-type-new">
+      <option value="income">Income</option>
+      <option value="expense">Expense</option>
+    </select></td>
+    <td><select class="fs-cell-input fs-cell-select" id="fse-cat-new">${catOpts}</select></td>
+    <td><input class="fs-cell-input fs-amount" id="fse-amt-new" type="number" placeholder="0" min="0"></td>
+    <td><input class="fs-cell-input" id="fse-notes-new" type="text" placeholder="Notes"></td>
+    <td style="white-space:nowrap">
+      <button class="fs-save-btn" onclick="fsSaveNew()">Save</button>
+      <button class="fs-del-btn" onclick="fsCancelNew()" style="margin-left:4px">✕</button>
+    </td>
+  </tr>`;
+}
+
+function fsAutoMonth(id) {
+  const d = document.getElementById('fse-date-'+id).value;
+  if(d) document.getElementById('fse-month-'+id).value = autoMonth(d);
+}
+function fsAutoMonthNew() {
+  const d = document.getElementById('fse-date-new').value;
+  if(d) document.getElementById('fse-month-new').value = autoMonth(d);
+}
+
+function fsAddRow() {
+  if(isReadOnly()){ toast('🔒 Read-only mode'); return; }
+  fsCancelNew();
+  const tbody = document.getElementById('fs-tbody');
+  const firstRow = tbody.querySelector('tr');
+  const newRow = document.createElement('tr');
+  newRow.outerHTML; // unused
+  tbody.insertAdjacentHTML('afterbegin', fsNewRowHTML());
+  setTimeout(()=>{ const el=document.getElementById('fse-desc-new'); if(el) el.focus(); },50);
+}
+
+function fsCancelNew() {
+  const row = document.getElementById('fs-row-new');
+  if(row) row.remove();
+}
+
+async function fsSaveNew() {
+  if(isReadOnly()) return;
+  const date = document.getElementById('fse-date-new').value;
+  const desc = document.getElementById('fse-desc-new').value.trim();
+  const month = document.getElementById('fse-month-new').value || autoMonth(date);
+  const fs_type = document.getElementById('fse-type-new').value;
+  const category = document.getElementById('fse-cat-new').value;
+  const amount = parseFloat(document.getElementById('fse-amt-new').value)||0;
+  const notes = document.getElementById('fse-notes-new').value.trim();
+  if(!date){ toastErr('Date is required'); return; }
+  if(amount<=0){ toastErr('Amount must be greater than 0'); return; }
+
+  setLoading(true,'Saving…');
+  try {
+    const row = await sbFetch('farmstay_entries',{method:'POST',body:JSON.stringify({
+      date,description:desc,month,fs_type,category,amount,notes:notes||null
+    })});
+    const saved = Array.isArray(row)?row[0]:row;
+    fsEntries.unshift({id:saved.id,date:saved.date,desc:saved.description||'',month:saved.month||'',fs_type:saved.fs_type||'income',category:saved.category||'',amount:Number(saved.amount)||0,notes:saved.notes||''});
+    fsCancelNew();
+    populateFsMonthFilter();
+    renderFarmstay();
+    toast('✅ Farmstay entry saved');
+  } catch(e){ toastErr('Save failed: '+e.message); } finally { setLoading(false); }
+}
+
+function fsStartEdit(id) {
+  if(isReadOnly()){ toast('🔒 Read-only mode'); return; }
+  fsCancelNew();
+  fsEditingId = id;
+  renderFarmstay();
+  setTimeout(()=>{ const el=document.getElementById('fse-desc-'+id); if(el) el.focus(); },50);
+}
+
+function fsCancelEdit(id) {
+  fsEditingId = null;
+  renderFarmstay();
+}
+
+async function fsSaveEdit(id) {
+  if(isReadOnly()) return;
+  const date = document.getElementById('fse-date-'+id).value;
+  const desc = document.getElementById('fse-desc-'+id).value.trim();
+  const month = document.getElementById('fse-month-'+id).value || autoMonth(date);
+  const fs_type = document.getElementById('fse-type-'+id).value;
+  const category = document.getElementById('fse-cat-'+id).value;
+  const amount = parseFloat(document.getElementById('fse-amt-'+id).value)||0;
+  const notes = document.getElementById('fse-notes-'+id).value.trim();
+  if(!date){ toastErr('Date is required'); return; }
+  if(amount<=0){ toastErr('Amount must be greater than 0'); return; }
+
+  setLoading(true,'Updating…');
+  try {
+    await sbFetch(`farmstay_entries?id=eq.${id}`,{method:'PATCH',body:JSON.stringify({
+      date,description:desc,month,fs_type,category,amount,notes:notes||null
+    })});
+    const idx = fsEntries.findIndex(e=>e.id===id);
+    if(idx!==-1) fsEntries[idx] = {id,date,desc,month,fs_type,category,amount,notes};
+    fsEditingId = null;
+    populateFsMonthFilter();
+    renderFarmstay();
+    toast('✅ Updated');
+  } catch(e){ toastErr('Update failed: '+e.message); } finally { setLoading(false); }
+}
+
+async function fsDelete(id) {
+  if(isReadOnly()){ toast('🔒 Read-only mode'); return; }
+  if(!confirm('Delete this farmstay entry?')) return;
+  setLoading(true,'Deleting…');
+  try {
+    await sbFetch(`farmstay_entries?id=eq.${id}`,{method:'DELETE'});
+    fsEntries = fsEntries.filter(e=>e.id!==id);
+    populateFsMonthFilter();
+    renderFarmstay();
+    toast('🗑 Deleted');
+  } catch(e){ toastErr('Delete failed: '+e.message); } finally { setLoading(false); }
 }
 
 async function checkAuth() {
@@ -3157,11 +3775,13 @@ function clearSelection() {
 }
 
 async function copySelected() {
-  const toCopy = entries.filter(e => selectedIds.has(e.id));
-  if (!toCopy.length) return;
+  if (isReadOnly()) { toast('🔒 Read-only access'); return; }
+  const toCopy = entries.filter(e => selectedIds.has(Number(e.id)));
+  if (!toCopy.length) { toastErr('No entries selected to copy'); return; }
+  const today = new Date().toISOString().split('T')[0];
   const copies = toCopy.map(e => {
     const { id, ...rest } = e;
-    return { ...rest, date: new Date().toISOString().split('T')[0], month: autoMonth(new Date().toISOString().split('T')[0]), week: '' };
+    return { ...rest, date: today, month: autoMonth(today), week: weekForDate(today) };
   });
   clearSelection();
   await dbInsertMulti(copies);
