@@ -201,8 +201,16 @@ body {
 .logo h1 { font-size: 17px; font-weight: 600; letter-spacing: 0.2px; color: var(--accent); line-height: 1.2; font-family: 'Playfair Display', serif; }
 .logo p { font-size: 10px; color: var(--muted); font-family: 'Playfair Display', serif; font-weight: 400; margin-top: 3px; letter-spacing: 0.3px; }
 
-.nav { padding: 12px 10px; flex: 1; overflow-y: auto; }
-.nav-section { font-family: 'DM Mono', monospace; font-size: 9px; color: var(--dim); letter-spacing: 1.5px; text-transform: uppercase; padding: 10px 8px 5px; }
+.nav { padding: 8px 10px; flex: 1; overflow-y: auto; }
+.nav-section {
+  font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 1.8px;
+  text-transform: uppercase; padding: 5px 10px 4px; margin: 8px -10px 4px;
+  color: var(--accent); font-weight: 600;
+  background: rgba(253,188,180,0.07);
+  border-left: 2px solid var(--accent);
+  border-top: 1px solid rgba(253,188,180,0.12);
+  border-bottom: 1px solid rgba(253,188,180,0.12);
+}
 
 .nav-item {
   display: flex; align-items: center; gap: 9px;
@@ -939,18 +947,18 @@ svg.sparkline { overflow: visible; }
   </div>
   <nav class="nav">
     <div class="nav-section">Overview</div>
-    <div class="nav-item active" data-view="dashboard" onclick="nav(this)"><span class="ni">🏡</span> Dashboard</div>
+    <div class="nav-item active" data-view="dashboard" data-label="Dashboard" onclick="nav(this)"><span class="ni">🏡</span> Dashboard</div>
     <div class="nav-section">Records</div>
-    <div class="nav-item" data-view="expenses" onclick="nav(this)"><span class="ni">📋</span> Expenses</div>
-    <div class="nav-item" data-view="earnings" onclick="nav(this)"><span class="ni">💰</span> Earnings</div>
-    <div class="nav-item" id="nav-ledger" data-view="ledger" onclick="nav(this)"><span class="ni">📒</span> Ledger</div>
-    <div class="nav-item" id="nav-farmstay" data-view="farmstay" onclick="nav(this)"><span class="ni">🏕</span> Farmstay</div>
+    <div class="nav-item" data-view="expenses" data-label="Expenses" onclick="nav(this)"><span class="ni">📋</span> Expenses</div>
+    <div class="nav-item" data-view="earnings" data-label="Earnings" onclick="nav(this)"><span class="ni">💰</span> Earnings</div>
+    <div class="nav-item" id="nav-ledger" data-view="ledger" data-label="Ledger" onclick="nav(this)"><span class="ni">📒</span> Ledger</div>
+    <div class="nav-item" id="nav-farmstay" data-view="farmstay" data-label="Farmstay" onclick="nav(this)"><span class="ni">🏕</span> Farmstay</div>
     <div class="nav-section">Analysis</div>
-    <div class="nav-item" data-view="monthly" onclick="nav(this)"><span class="ni">📅</span> Monthly View</div>
-    <div class="nav-item" data-view="catview" onclick="nav(this)"><span class="ni">🏷</span> Categories</div>
-    <div class="nav-item" data-view="weekly" onclick="nav(this)"><span class="ni">📊</span> Weekly Report</div>
+    <div class="nav-item" data-view="monthly" data-label="Monthly View" onclick="nav(this)"><span class="ni">📅</span> Monthly View</div>
+    <div class="nav-item" data-view="catview" data-label="Categories" onclick="nav(this)"><span class="ni">🏷</span> Categories</div>
+    <div class="nav-item" data-view="weekly" data-label="Weekly Report" onclick="nav(this)"><span class="ni">📊</span> Weekly Report</div>
     <div class="nav-section">Settings</div>
-    <div class="nav-item" id="nav-manage" data-view="manage" onclick="nav(this)"><span class="ni">⚙️</span> Manage Categories</div>
+    <div class="nav-item" id="nav-manage" data-view="manage" data-label="Manage Categories" onclick="nav(this)"><span class="ni">⚙️</span> Manage Categories</div>
   </nav>
   <div class="theme-switcher">
     <div class="theme-label">Theme</div>
@@ -1732,7 +1740,7 @@ function nav(el) {
   document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active')); el.classList.add('active');
   document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
   document.getElementById('view-'+view).classList.add('active');
-  document.getElementById('page-title').textContent=el.textContent.trim().replace(/^./,'').trim();
+  document.getElementById('page-title').textContent=el.dataset.label||el.textContent.trim().replace(/^[\u{1F000}-\u{1FFFF}\u{2600}-\u{27FF}]\s*/u,'').trim();
   activeView=view; refreshView(view);
   // Close sidebar on mobile after nav
   if (window.innerWidth <= 768) closeSidebar();
