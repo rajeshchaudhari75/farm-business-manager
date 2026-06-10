@@ -1443,6 +1443,20 @@ async function sbFetch(path, opts={}) {
   const t = await res.text(); return t ? JSON.parse(t) : [];
 }
 
+async function sbFetchAll(basePath, opts={}) {
+  const BATCH = 1000;
+  let allRows = [];
+  let offset  = 0;
+  while (true) {
+    const sep = basePath.includes('?') ? '&' : '?';
+    const page = await sbFetch(`${basePath}${sep}limit=${BATCH}&offset=${offset}`, opts);
+    allRows = allRows.concat(page);
+    if (page.length < BATCH) break;
+    offset += BATCH;
+  }
+  return allRows;
+}
+
 /* ─── Constants ─────────────────────────────────── */
 const MONTHS = ['June 2025','July 2025','August 2025','September 2025','October 2025','November 2025','December 2025','January 2026','February 2026','March 2026','April 2026','May 2026','June 2026','July 2026'];
 const MONTHS_SHORT = ["Jun'25","Jul'25","Aug'25","Sep'25","Oct'25","Nov'25","Dec'25","Jan'26","Feb'26","Mar'26","Apr'26","May'26","Jun'26","Jul'26"];
@@ -1621,9 +1635,8 @@ async function loadAll() {
   try {
     await Promise.all([loadCategories(), loadSubItems()]);
     /* ─── Before ────────────────────────────────── */
-    /* const rows = await sbFetch('entries?select=*&order=date.desc,created_at.desc'); */
     /* ─── After ────────────────────────────────── */
-    const rows = await sbFetch('entries?select=*&order=date.desc,created_at.desc', { headers: { 'Range': '0-99999999', 'Range-Unit': 'items' } });
+    const rows = await sbFetchAll('entries?select=*&order=date.desc,created_at.desc');
     entries = rows.map(toLocal);
     rebuildCatDropdown();
     refreshView(activeView);
@@ -3165,9 +3178,8 @@ async function loadLdEntries() {
   setLoading(true,'Loading ledger…');
   try {
     /* ── Before ───────────────────────────────── */
-    /* const rows = await sbFetch('ledger_entries?select=*&order=date.desc,created_at.desc'); */
     /* ── After ───────────────────────────────── */
-    const rows = await sbFetch('ledger_entries?select=*&order=date.desc,created_at.desc', { headers: { 'Range': '0-99999999', 'Range-Unit': 'items' } });
+    const rows = await sbFetchAll('ledger_entries?select=*&order=date.desc,created_at.desc');
     ldEntries = rows.map(r=>({
       id:r.id, date:r.date, desc:r.description||'', month:r.month||'',
       ld_type:r.ld_type||'credit', category:r.category||'',
@@ -3435,9 +3447,8 @@ async function loadFsEntries() {
   setLoading(true,'Loading farmstay…');
   try {
     /* ── Before ───────────────────────────────── */
-    /* const rows = await sbFetch('farmstay_entries?select=*&order=date.desc,created_at.desc'); */
     /* ── After ───────────────────────────────── */
-    const rows = await sbFetch('farmstay_entries?select=*&order=date.desc,created_at.desc', { headers: { 'Range': '0-99999999', 'Range-Unit': 'items' } });
+    const rows = await sbFetchAll('farmstay_entries?select=*&order=date.desc,created_at.desc');
     fsEntries = rows.map(r=>({
       id:r.id, date:r.date, desc:r.description||'', month:r.month||'',
       fs_type:r.fs_type||'income', category:r.category||'', amount:Number(r.amount)||0,
