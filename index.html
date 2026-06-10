@@ -1620,7 +1620,10 @@ async function loadAll() {
   setLoading(true,'Loading from Supabase…');
   try {
     await Promise.all([loadCategories(), loadSubItems()]);
-    const rows = await sbFetch('entries?select=*&order=date.desc,created_at.desc');
+    /* ─── Before ────────────────────────────────── */
+    /* const rows = await sbFetch('entries?select=*&order=date.desc,created_at.desc'); */
+    /* ─── After ────────────────────────────────── */
+    const rows = await sbFetch('entries?select=*&order=date.desc,created_at.desc', { headers: { 'Range': '0-99999999', 'Range-Unit': 'items' } });
     entries = rows.map(toLocal);
     rebuildCatDropdown();
     refreshView(activeView);
@@ -3161,7 +3164,10 @@ let ldEditingId = null;
 async function loadLdEntries() {
   setLoading(true,'Loading ledger…');
   try {
-    const rows = await sbFetch('ledger_entries?select=*&order=date.desc,created_at.desc');
+    /* ── Before ───────────────────────────────── */
+    /* const rows = await sbFetch('ledger_entries?select=*&order=date.desc,created_at.desc'); */
+    /* ── After ───────────────────────────────── */
+    const rows = await sbFetch('ledger_entries?select=*&order=date.desc,created_at.desc', { headers: { 'Range': '0-99999999', 'Range-Unit': 'items' } });
     ldEntries = rows.map(r=>({
       id:r.id, date:r.date, desc:r.description||'', month:r.month||'',
       ld_type:r.ld_type||'credit', category:r.category||'',
@@ -3428,7 +3434,10 @@ const FS_CATEGORIES = ['Accommodation','Food & Beverage','Activities','Maintenan
 async function loadFsEntries() {
   setLoading(true,'Loading farmstay…');
   try {
-    const rows = await sbFetch('farmstay_entries?select=*&order=date.desc,created_at.desc');
+    /* ── Before ───────────────────────────────── */
+    /* const rows = await sbFetch('farmstay_entries?select=*&order=date.desc,created_at.desc'); */
+    /* ── After ───────────────────────────────── */
+    const rows = await sbFetch('farmstay_entries?select=*&order=date.desc,created_at.desc', { headers: { 'Range': '0-99999999', 'Range-Unit': 'items' } });
     fsEntries = rows.map(r=>({
       id:r.id, date:r.date, desc:r.description||'', month:r.month||'',
       fs_type:r.fs_type||'income', category:r.category||'', amount:Number(r.amount)||0,
