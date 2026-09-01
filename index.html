@@ -863,6 +863,39 @@ svg.sparkline { overflow: visible; }
   .topbar-right .btn span { display: none; }
   .content { padding: 10px 8px; padding-bottom: 80px; }
 }
+
+/* ── Monthly view: year-wise additions ─────────────── */
+.mo-year-hdr td {
+  background: rgba(253,188,180,0.08) !important;
+  border-top: 1px solid rgba(253,188,180,0.25) !important;
+  border-bottom: 1px solid rgba(253,188,180,0.12) !important;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--accent) !important;
+  padding: 7px 12px !important;
+}
+.mo-year-hdr td:first-child { font-weight: 700; }
+.mo-year-total td {
+  background: rgba(253,188,180,0.05) !important;
+  border-top: 1px solid rgba(253,188,180,0.18) !important;
+  font-weight: 700;
+  font-size: 13px !important;
+}
+.mo-year-total td:first-child {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.8px;
+  color: var(--accent);
+}
+.yearly-row { cursor: default; }
+.yearly-row:hover td { background: rgba(253,188,180,0.06) !important; }
+.mo-mode-active {
+  background: rgba(253,188,180,0.15) !important;
+  color: var(--accent) !important;
+  border-color: rgba(253,188,180,0.35) !important;
+}
 </style>
 </head>
 <body>
@@ -1204,12 +1237,34 @@ svg.sparkline { overflow: visible; }
 
     <!-- ─── MONTHLY VIEW ──────────────────────── -->
     <div class="view" id="view-monthly">
-      <div class="card mb22"><div class="card-header"><span class="card-title">Month-wise Summary</span></div>
+
+      <!-- Year / view-mode toolbar -->
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:16px;">
+        <div class="month-tabs" id="mo-year-tabs" style="margin-bottom:0;flex-wrap:wrap;"></div>
+        <div style="display:flex;gap:6px;">
+          <button class="btn btn-ghost btn-sm" id="mo-mode-month" onclick="setMonthlyMode('month')" style="font-size:11px;padding:6px 12px;">📅 Month-wise</button>
+          <button class="btn btn-ghost btn-sm" id="mo-mode-year"  onclick="setMonthlyMode('year')"  style="font-size:11px;padding:6px 12px;">📆 Year-wise</button>
+        </div>
+      </div>
+
+      <!-- Month-wise table -->
+      <div id="mo-panel-month" class="card mb22">
+        <div class="card-header"><span class="card-title" id="mo-month-title">Month-wise Summary</span></div>
         <div class="tbl-wrap"><table class="mo-table">
-          <thead><tr><th>Month</th><th>Expenses</th><th>Earnings</th><th>Net P&L</th></tr></thead>
-          <tbody id="monthly-tbody"><tr><td colspan="5" class="empty">No data</td></tr></tbody>
+          <thead><tr id="mo-month-thead-row"><th>Month</th><th>Expenses</th><th>Earnings</th><th>Net P&L</th></tr></thead>
+          <tbody id="monthly-tbody"><tr><td colspan="4" class="empty">No data</td></tr></tbody>
         </table></div>
       </div>
+
+      <!-- Year-wise table (hidden by default) -->
+      <div id="mo-panel-year" class="card mb22" style="display:none">
+        <div class="card-header"><span class="card-title">Year-wise Summary</span></div>
+        <div class="tbl-wrap"><table class="mo-table">
+          <thead><tr id="mo-year-thead-row"><th>Year</th><th>Expenses</th><th>Earnings</th><th>Net P&L</th><th>Months Active</th></tr></thead>
+          <tbody id="yearly-tbody"><tr><td colspan="5" class="empty">No data</td></tr></tbody>
+        </table></div>
+      </div>
+
       <div class="kpi-grid">
         <div class="kpi red-accent"><div class="kpi-label">Cumulative Expenses</div><div class="kpi-value" id="cum-exp">₹0</div></div>
         <div class="kpi"><div class="kpi-label">Cumulative Earnings</div><div class="kpi-value" id="cum-earn">₹0</div></div>
@@ -1220,18 +1275,75 @@ svg.sparkline { overflow: visible; }
 
     <!-- ─── CATEGORIES VIEW ───────────────────── -->
     <div class="view" id="view-catview">
-      <div class="mb16"><div class="month-tabs" id="cat-month-tabs"></div></div>
-      <div class="three-col" id="cat-cards-grid"><div class="empty" style="grid-column:1/-1">No data</div></div>
-      <div class="card"><div class="card-header"><span class="card-title">Category Breakdown</span></div>
-        <div class="card-body" id="cat-bars-container"><div class="empty">No data</div></div>
+
+      <!-- Year + mode toolbar -->
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:12px;">
+        <div class="month-tabs" id="cat-year-tabs" style="margin-bottom:0;flex-wrap:wrap;"></div>
+        <div style="display:flex;gap:6px;">
+          <button class="btn btn-ghost btn-sm" id="cat-mode-month" onclick="setCatMode('month')" style="font-size:11px;padding:6px 12px;">📅 Month-wise</button>
+          <button class="btn btn-ghost btn-sm" id="cat-mode-year"  onclick="setCatMode('year')"  style="font-size:11px;padding:6px 12px;">📆 Year-wise</button>
+        </div>
       </div>
+
+      <!-- Month-wise panel (default) -->
+      <div id="cat-panel-month">
+        <div class="mb16"><div class="month-tabs" id="cat-month-tabs"></div></div>
+        <div class="three-col" id="cat-cards-grid"><div class="empty" style="grid-column:1/-1">No data</div></div>
+        <div class="card"><div class="card-header"><span class="card-title" id="cat-bars-title">Category Breakdown</span></div>
+          <div class="card-body" id="cat-bars-container"><div class="empty">No data</div></div>
+        </div>
+      </div>
+
+      <!-- Year-wise panel -->
+      <div id="cat-panel-year" style="display:none">
+        <div id="cat-year-content"></div>
+      </div>
+
     </div>
 
     <!-- ─── WEEKLY REPORT ─────────────────────── -->
     <div class="view" id="view-weekly">
-      <div class="mb16"><div class="month-tabs" id="week-month-tabs"></div></div>
-      <div class="card mb16"><div class="card-header"><span class="card-title">Weekly Expense Breakdown</span></div><div class="card-body"><div class="week-grid" id="week-exp-grid"></div></div></div>
-      <div class="card"><div class="card-header"><span class="card-title">Weekly Earnings Breakdown</span></div><div class="card-body"><div class="week-grid" id="week-earn-grid"></div></div></div>
+
+      <!-- Year + mode toolbar -->
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:12px;">
+        <div class="month-tabs" id="wk-year-tabs" style="margin-bottom:0;flex-wrap:wrap;"></div>
+        <div style="display:flex;gap:6px;">
+          <button class="btn btn-ghost btn-sm" id="wk-mode-month" onclick="setWeeklyMode('month')" style="font-size:11px;padding:6px 12px;">📅 Month-wise</button>
+          <button class="btn btn-ghost btn-sm" id="wk-mode-year"  onclick="setWeeklyMode('year')"  style="font-size:11px;padding:6px 12px;">📆 Year-wise</button>
+        </div>
+      </div>
+
+      <!-- Month-wise panel (default) -->
+      <div id="wk-panel-month">
+        <div class="mb16"><div class="month-tabs" id="week-month-tabs"></div></div>
+        <div class="card mb16">
+          <div class="card-header"><span class="card-title" id="wk-exp-title">Weekly Expense Breakdown</span></div>
+          <div class="card-body"><div class="week-grid" id="week-exp-grid"></div></div>
+        </div>
+        <div class="card">
+          <div class="card-header"><span class="card-title" id="wk-earn-title">Weekly Earnings Breakdown</span></div>
+          <div class="card-body"><div class="week-grid" id="week-earn-grid"></div></div>
+        </div>
+      </div>
+
+      <!-- Year-wise panel: month × week matrix -->
+      <div id="wk-panel-year" style="display:none">
+        <div class="card mb16">
+          <div class="card-header"><span class="card-title" id="wk-yr-exp-title">Year-wise Weekly Expenses</span></div>
+          <div class="tbl-wrap"><table class="mo-table" id="wk-yr-exp-table">
+            <thead><tr id="wk-yr-exp-head"><th>Month</th><th>Week 1</th><th>Week 2</th><th>Week 3</th><th>Week 4</th><th>Week 5</th><th>Total</th></tr></thead>
+            <tbody id="wk-yr-exp-body"><tr><td colspan="7" class="empty">No data</td></tr></tbody>
+          </table></div>
+        </div>
+        <div class="card">
+          <div class="card-header"><span class="card-title" id="wk-yr-earn-title">Year-wise Weekly Earnings</span></div>
+          <div class="tbl-wrap"><table class="mo-table" id="wk-yr-earn-table">
+            <thead><tr><th>Month</th><th>Week 1</th><th>Week 2</th><th>Week 3</th><th>Week 4</th><th>Week 5</th><th>Total</th></tr></thead>
+            <tbody id="wk-yr-earn-body"><tr><td colspan="7" class="empty">No data</td></tr></tbody>
+          </table></div>
+        </div>
+      </div>
+
     </div>
 
     <!-- ─── MANAGE CATEGORIES ────────────────── -->
@@ -2387,68 +2499,363 @@ function renderEarnings() {
 }
 
 /* ─── MONTHLY ────────────────────────────────────── */
+let monthlyMode      = 'month'; // 'month' | 'year'
+let monthlyYearFilter = 'all';  // 'all' | '2025' | '2026' | ...
+
+function setMonthlyMode(mode) {
+  monthlyMode = mode;
+  renderMonthly();
+}
+function setMonthlyYearFilter(yr) {
+  monthlyYearFilter = yr;
+  renderMonthly();
+}
+
 function renderMonthly() {
-  const usedM=MONTHS.filter(m=>entries.some(e=>e.month===m));
-  const tbody=document.getElementById('monthly-tbody');
+  const allUsedM = MONTHS.filter(m=>entries.some(e=>e.month===m));
+
+  /* ── derive unique years from used months ── */
+  const usedYears = [...new Set(allUsedM.map(m=>m.split(' ')[1]))].sort();
+
+  /* ── year tabs ── */
+  const tabsEl = document.getElementById('mo-year-tabs');
+  if (tabsEl) {
+    tabsEl.innerHTML =
+      `<div class="month-tab ${monthlyYearFilter==='all'?'active':''}" onclick="setMonthlyYearFilter('all')">All Years</div>`
+      + usedYears.map(yr=>
+        `<div class="month-tab ${monthlyYearFilter===yr?'active':''}" onclick="setMonthlyYearFilter('${yr}')">${yr}</div>`
+      ).join('');
+  }
+
+  /* ── mode button states ── */
+  ['month','year'].forEach(m=>{
+    const btn = document.getElementById('mo-mode-'+m);
+    if(btn) btn.classList.toggle('mo-mode-active', monthlyMode===m);
+  });
+
+  /* ── panel visibility ── */
+  const panelMonth = document.getElementById('mo-panel-month');
+  const panelYear  = document.getElementById('mo-panel-year');
+  if (panelMonth) panelMonth.style.display = monthlyMode==='month' ? '' : 'none';
+  if (panelYear)  panelYear.style.display  = monthlyMode==='year'  ? '' : 'none';
+
+  /* ── filter months by selected year ── */
+  const usedM = monthlyYearFilter==='all'
+    ? allUsedM
+    : allUsedM.filter(m=>m.split(' ')[1]===monthlyYearFilter);
 
   const expCats  = categories.filter(isExpenseCat);
   const earnCats = categories.filter(isEarningCat);
   const allCats  = [...expCats, ...earnCats];
+  const numBase  = 4; // Month + Expenses + Earnings + Net
 
-  // Rebuild headers: fixed cols + expense cat cols + earning cat cols
-  const headEl = document.getElementById('monthly-cat-heads') || document.querySelector('#view-monthly th:last-child');
-  const existingCatThs = document.querySelectorAll('#view-monthly thead th[data-cat]');
-  existingCatThs.forEach(th=>th.remove());
+  /* ── rebuild category headers for month table ── */
+  const mThead = document.getElementById('mo-month-thead-row');
+  if (mThead) {
+    while (mThead.children.length > numBase) mThead.removeChild(mThead.lastChild);
+    expCats.forEach(c=>{
+      const th=document.createElement('th'); th.dataset.cat=c.name;
+      th.style.color='rgba(232,90,74,0.7)'; th.textContent=c.name.split('/')[0]; mThead.appendChild(th);
+    });
+    earnCats.forEach(c=>{
+      const th=document.createElement('th'); th.dataset.cat=c.name;
+      th.style.color='rgba(168,212,160,0.8)'; th.textContent=c.name; mThead.appendChild(th);
+    });
+  }
 
-  const thead = document.querySelector('#view-monthly thead tr');
-  // Remove old dynamic headers first
-  while (thead.children.length > 4) thead.removeChild(thead.lastChild);
-  // Add expense category headers
-  expCats.forEach(c=>{
-    const th=document.createElement('th'); th.dataset.cat=c.name;
-    th.style.color='rgba(232,90,74,0.7)'; th.textContent=c.name.split('/')[0]; thead.appendChild(th);
-  });
-  // Add earning category headers
-  earnCats.forEach(c=>{
-    const th=document.createElement('th'); th.dataset.cat=c.name;
-    th.style.color='rgba(168,212,160,0.8)'; th.textContent=c.name; thead.appendChild(th);
-  });
+  /* ── rebuild category headers for year table ── */
+  const yThead = document.getElementById('mo-year-thead-row');
+  if (yThead) {
+    while (yThead.children.length > 5) yThead.removeChild(yThead.lastChild);
+    expCats.forEach(c=>{
+      const th=document.createElement('th'); th.dataset.cat=c.name;
+      th.style.color='rgba(232,90,74,0.7)'; th.textContent=c.name.split('/')[0]; yThead.appendChild(th);
+    });
+    earnCats.forEach(c=>{
+      const th=document.createElement('th'); th.dataset.cat=c.name;
+      th.style.color='rgba(168,212,160,0.8)'; th.textContent=c.name; yThead.appendChild(th);
+    });
+  }
 
-  if(!usedM.length){ tbody.innerHTML=`<tr><td colspan="${4+allCats.length}" class="empty">No data</td></tr>`; return; }
+  const totalCols = numBase + allCats.length;
 
-  let cumE=0,cumEar=0;
-  tbody.innerHTML=usedM.map(m=>{
-    const exp=monthlyTotal('expense',m),earn=monthlyTotal('earning',m),net=earn-exp;
-    cumE+=exp; cumEar+=earn;
-    const expCols  = expCats.map(c=>`<td class="amount-mono" style="font-size:12px;color:var(--muted)">${catTotal(c.name,m)?fmt(catTotal(c.name,m)):'—'}</td>`).join('');
-    const earnCols = earnCats.map(c=>`<td class="amount-mono" style="font-size:12px;color:rgba(168,212,160,0.8)">${catTotal(c.name,m)?fmt(catTotal(c.name,m)):'—'}</td>`).join('');
-    return `<tr><td style="font-weight:600">${m}</td><td class="amount-exp">-${fmt(exp)}</td><td class="amount-earn">+${fmt(earn)}</td><td class="${net>=0?'amount-earn':'amount-exp'}" style="font-weight:700">${fmtSigned(net)}</td>${expCols}${earnCols}</tr>`;
-  }).join('');
+  /* ════════════════════════════════════════
+     MONTH-WISE TABLE (with year group rows)
+     ════════════════════════════════════════ */
+  const tbody = document.getElementById('monthly-tbody');
+  if (tbody) {
+    if (!usedM.length) {
+      tbody.innerHTML = `<tr><td colspan="${totalCols}" class="empty">No data for selected period</td></tr>`;
+    } else {
+      let html = '';
+      let cumE = 0, cumEar = 0;
 
-  const cumNet=cumEar-cumE;
-  document.getElementById('cum-exp').textContent=fmt(cumE);
-  document.getElementById('cum-earn').textContent=fmt(cumEar);
-  document.getElementById('cum-net').textContent=fmtSigned(cumNet);
-  document.getElementById('cum-net').className='kpi-value '+(cumNet>=0?'positive':'negative');
-  document.getElementById('active-months').textContent=usedM.length;
+      if (monthlyYearFilter === 'all') {
+        /* group by year, insert year header + year subtotal rows */
+        usedYears.forEach(yr => {
+          const yrMonths = usedM.filter(m=>m.split(' ')[1]===yr);
+          if (!yrMonths.length) return;
+          // year header row
+          html += `<tr class="mo-year-hdr"><td colspan="${totalCols}">── ${yr}</td></tr>`;
+          let yrE=0, yrEar=0;
+          yrMonths.forEach(m=>{
+            const exp=monthlyTotal('expense',m), earn=monthlyTotal('earning',m), net=earn-exp;
+            cumE+=exp; cumEar+=earn; yrE+=exp; yrEar+=earn;
+            const expCols = expCats.map(c=>`<td class="amount-mono" style="font-size:12px;color:var(--muted)">${catTotal(c.name,m)?fmt(catTotal(c.name,m)):'—'}</td>`).join('');
+            const earnCols= earnCats.map(c=>`<td class="amount-mono" style="font-size:12px;color:rgba(168,212,160,0.8)">${catTotal(c.name,m)?fmt(catTotal(c.name,m)):'—'}</td>`).join('');
+            html += `<tr><td style="font-weight:600;padding-left:20px">${m}</td><td class="amount-exp">-${fmt(exp)}</td><td class="amount-earn">+${fmt(earn)}</td><td class="${net>=0?'amount-earn':'amount-exp'}" style="font-weight:700">${fmtSigned(net)}</td>${expCols}${earnCols}</tr>`;
+          });
+          // year subtotal row
+          const yrNet = yrEar - yrE;
+          const yrExpCols = expCats.map(c=>{
+            const v=yrMonths.reduce((s,m)=>s+catTotal(c.name,m),0);
+            return `<td class="amount-mono" style="font-size:12px;font-weight:700;color:var(--muted)">${v?fmt(v):'—'}</td>`;
+          }).join('');
+          const yrEarnCols = earnCats.map(c=>{
+            const v=yrMonths.reduce((s,m)=>s+catTotal(c.name,m),0);
+            return `<td class="amount-mono" style="font-size:12px;font-weight:700;color:rgba(168,212,160,0.8)">${v?fmt(v):'—'}</td>`;
+          }).join('');
+          html += `<tr class="mo-year-total"><td>${yr} TOTAL &nbsp;(${yrMonths.length}mo)</td><td class="amount-exp">-${fmt(yrE)}</td><td class="amount-earn">+${fmt(yrEar)}</td><td class="${yrNet>=0?'amount-earn':'amount-exp'}">${fmtSigned(yrNet)}</td>${yrExpCols}${yrEarnCols}</tr>`;
+        });
+      } else {
+        /* single year — no grouping needed */
+        usedM.forEach(m=>{
+          const exp=monthlyTotal('expense',m), earn=monthlyTotal('earning',m), net=earn-exp;
+          cumE+=exp; cumEar+=earn;
+          const expCols = expCats.map(c=>`<td class="amount-mono" style="font-size:12px;color:var(--muted)">${catTotal(c.name,m)?fmt(catTotal(c.name,m)):'—'}</td>`).join('');
+          const earnCols= earnCats.map(c=>`<td class="amount-mono" style="font-size:12px;color:rgba(168,212,160,0.8)">${catTotal(c.name,m)?fmt(catTotal(c.name,m)):'—'}</td>`).join('');
+          html += `<tr><td style="font-weight:600">${m}</td><td class="amount-exp">-${fmt(exp)}</td><td class="amount-earn">+${fmt(earn)}</td><td class="${net>=0?'amount-earn':'amount-exp'}" style="font-weight:700">${fmtSigned(net)}</td>${expCols}${earnCols}</tr>`;
+        });
+      }
+      tbody.innerHTML = html;
+    }
+  }
+
+  /* ════════════════
+     YEAR-WISE TABLE
+     ════════════════ */
+  const yTbody = document.getElementById('yearly-tbody');
+  if (yTbody) {
+    const yearsToShow = monthlyYearFilter==='all' ? usedYears : [monthlyYearFilter];
+    if (!yearsToShow.length) {
+      yTbody.innerHTML = `<tr><td colspan="${5+allCats.length}" class="empty">No data</td></tr>`;
+    } else {
+      let html = '';
+      yearsToShow.forEach(yr => {
+        const yrMonths = allUsedM.filter(m=>m.split(' ')[1]===yr);
+        if (!yrMonths.length) return;
+        const yrE   = yrMonths.reduce((s,m)=>s+monthlyTotal('expense',m),0);
+        const yrEar = yrMonths.reduce((s,m)=>s+monthlyTotal('earning',m),0);
+        const yrNet = yrEar - yrE;
+        const expCols = expCats.map(c=>{
+          const v=yrMonths.reduce((s,m)=>s+catTotal(c.name,m),0);
+          return `<td class="amount-mono" style="font-size:12px;color:var(--muted)">${v?fmt(v):'—'}</td>`;
+        }).join('');
+        const earnCols = earnCats.map(c=>{
+          const v=yrMonths.reduce((s,m)=>s+catTotal(c.name,m),0);
+          return `<td class="amount-mono" style="font-size:12px;color:rgba(168,212,160,0.8)">${v?fmt(v):'—'}</td>`;
+        }).join('');
+        html += `<tr class="yearly-row">
+          <td style="font-weight:700;font-family:'DM Mono',monospace;color:var(--accent)">${yr}</td>
+          <td class="amount-exp">-${fmt(yrE)}</td>
+          <td class="amount-earn">+${fmt(yrEar)}</td>
+          <td class="${yrNet>=0?'amount-earn':'amount-exp'}" style="font-weight:700">${fmtSigned(yrNet)}</td>
+          <td class="amount-mono" style="color:var(--muted)">${yrMonths.length}</td>
+          ${expCols}${earnCols}
+        </tr>`;
+      });
+      yTbody.innerHTML = html;
+    }
+  }
+
+  /* ── KPI cards (always full cumulative across all entries, or filtered year) ── */
+  const kpiMonths = monthlyYearFilter==='all' ? allUsedM : allUsedM.filter(m=>m.split(' ')[1]===monthlyYearFilter);
+  const cumE   = kpiMonths.reduce((s,m)=>s+monthlyTotal('expense',m),0);
+  const cumEar = kpiMonths.reduce((s,m)=>s+monthlyTotal('earning',m),0);
+  const cumNet = cumEar - cumE;
+  document.getElementById('cum-exp').textContent = fmt(cumE);
+  document.getElementById('cum-earn').textContent = fmt(cumEar);
+  document.getElementById('cum-net').textContent = fmtSigned(cumNet);
+  document.getElementById('cum-net').className = 'kpi-value '+(cumNet>=0?'positive':'negative');
+  document.getElementById('active-months').textContent = kpiMonths.length;
+
+  /* ── card title update ── */
+  const titleEl = document.getElementById('mo-month-title');
+  if (titleEl) titleEl.textContent = monthlyYearFilter==='all' ? 'Month-wise Summary (All Years)' : `Month-wise Summary — ${monthlyYearFilter}`;
 }
 
 /* ─── CATVIEW ────────────────────────────────────── */
+let catMode       = 'month'; // 'month' | 'year'
+let catYearFilter = 'all';   // 'all' | '2025' | '2026' | ...
+
+function setCatMode(mode) { catMode = mode; renderCatView(); }
+function setCatYearFilter(yr) { catYearFilter = yr; renderCatView(); }
+
 function renderCatView() {
-  const usedM=MONTHS.filter(m=>getExpenses().some(e=>e.month===m));
-  if(!usedM.includes(catSelectedMonth)) catSelectedMonth=usedM[0]||MONTHS[0];
-  document.getElementById('cat-month-tabs').innerHTML=usedM.map(m=>`<div class="month-tab ${m===catSelectedMonth?'active':''}" onclick="catSetMonth('${m}')">${MONTHS_SHORT[MONTHS.indexOf(m)]||m}</div>`).join('');
-  const catTotals=categories.map(c=>({...c,val:catTotal(c.name,catSelectedMonth)})).filter(x=>x.val>0);
-  const total=catTotals.reduce((s,x)=>s+x.val,0);
-  const grid=document.getElementById('cat-cards-grid'),bars=document.getElementById('cat-bars-container');
-  if(!catTotals.length){ grid.innerHTML='<div class="empty" style="grid-column:1/-1">No data for this month</div>'; bars.innerHTML='<div class="empty">No data</div>'; return; }
-  grid.innerHTML=catTotals.sort((a,b)=>b.val-a.val).map(c=>`<div class="kpi" style="border-top:3px solid ${c.color}"><div class="kpi-label">${c.name}</div><div class="kpi-value" style="font-size:20px">${fmt(c.val)}</div><div class="kpi-sub">${total?((c.val/total*100).toFixed(1)):'0'}% of month</div></div>`).join('');
-  const maxV=Math.max(...catTotals.map(x=>x.val),1);
-  bars.innerHTML=catTotals.sort((a,b)=>b.val-a.val).map(c=>`<div class="bar-row"><div class="bar-lbl">${c.name.split('/')[0]}</div><div class="bar-track"><div class="bar-fill" style="width:${(c.val/maxV*100).toFixed(1)}%;background:${c.color}"></div></div><div class="bar-val">${fmt(c.val)}</div></div>`).join('');
+  const allUsedM = MONTHS.filter(m => getExpenses().some(e => e.month === m));
+  const usedYears = [...new Set(allUsedM.map(m => m.split(' ')[1]))].sort();
+
+  /* ── year tabs ── */
+  const catYearTabsEl = document.getElementById('cat-year-tabs');
+  if (catYearTabsEl) {
+    catYearTabsEl.innerHTML =
+      `<div class="month-tab ${catYearFilter==='all'?'active':''}" onclick="setCatYearFilter('all')">All Years</div>`
+      + usedYears.map(yr =>
+        `<div class="month-tab ${catYearFilter===yr?'active':''}" onclick="setCatYearFilter('${yr}')">${yr}</div>`
+      ).join('');
+  }
+
+  /* ── mode button states ── */
+  ['month','year'].forEach(m => {
+    const btn = document.getElementById('cat-mode-'+m);
+    if (btn) btn.classList.toggle('mo-mode-active', catMode === m);
+  });
+
+  /* ── panel visibility ── */
+  const pMonth = document.getElementById('cat-panel-month');
+  const pYear  = document.getElementById('cat-panel-year');
+  if (pMonth) pMonth.style.display = catMode === 'month' ? '' : 'none';
+  if (pYear)  pYear.style.display  = catMode === 'year'  ? '' : 'none';
+
+  /* ── filter months by year ── */
+  const filteredM = catYearFilter === 'all'
+    ? allUsedM
+    : allUsedM.filter(m => m.split(' ')[1] === catYearFilter);
+
+  /* ══════════════════
+     MONTH-WISE PANEL
+     ══════════════════ */
+  if (catMode === 'month') {
+    if (!filteredM.includes(catSelectedMonth)) catSelectedMonth = filteredM[0] || MONTHS[0];
+
+    const monthTabsEl = document.getElementById('cat-month-tabs');
+    if (monthTabsEl) {
+      monthTabsEl.innerHTML = filteredM.map(m =>
+        `<div class="month-tab ${m===catSelectedMonth?'active':''}" onclick="catSetMonth('${m}')">${MONTHS_SHORT[MONTHS.indexOf(m)] || m}</div>`
+      ).join('');
+    }
+
+    const catTotals = categories.map(c => ({...c, val: catTotal(c.name, catSelectedMonth)})).filter(x => x.val > 0);
+    const total = catTotals.reduce((s, x) => s + x.val, 0);
+    const grid = document.getElementById('cat-cards-grid');
+    const bars = document.getElementById('cat-bars-container');
+    const barsTitle = document.getElementById('cat-bars-title');
+    if (barsTitle) barsTitle.textContent = `Category Breakdown — ${catSelectedMonth}`;
+
+    if (!catTotals.length) {
+      if (grid) grid.innerHTML = '<div class="empty" style="grid-column:1/-1">No data for this month</div>';
+      if (bars) bars.innerHTML = '<div class="empty">No data</div>';
+      return;
+    }
+    if (grid) grid.innerHTML = catTotals.sort((a,b)=>b.val-a.val).map(c =>
+      `<div class="kpi" style="border-top:3px solid ${c.color}">
+        <div class="kpi-label">${c.name}</div>
+        <div class="kpi-value" style="font-size:20px">${fmt(c.val)}</div>
+        <div class="kpi-sub">${total ? ((c.val/total*100).toFixed(1)) : '0'}% of month</div>
+      </div>`
+    ).join('');
+    const maxV = Math.max(...catTotals.map(x => x.val), 1);
+    if (bars) bars.innerHTML = catTotals.sort((a,b)=>b.val-a.val).map(c =>
+      `<div class="bar-row">
+        <div class="bar-lbl">${c.name.split('/')[0]}</div>
+        <div class="bar-track"><div class="bar-fill" style="width:${(c.val/maxV*100).toFixed(1)}%;background:${c.color}"></div></div>
+        <div class="bar-val">${fmt(c.val)}</div>
+      </div>`
+    ).join('');
+    return;
+  }
+
+  /* ═════════════════
+     YEAR-WISE PANEL
+     ═════════════════ */
+  const yearsToShow = catYearFilter === 'all' ? usedYears : [catYearFilter];
+  const content = document.getElementById('cat-year-content');
+  if (!content) return;
+
+  if (!yearsToShow.length || !filteredM.length) {
+    content.innerHTML = '<div class="empty">No data for selected period</div>';
+    return;
+  }
+
+  let html = '';
+  yearsToShow.forEach(yr => {
+    const yrMonths = allUsedM.filter(m => m.split(' ')[1] === yr);
+    if (!yrMonths.length) return;
+
+    // aggregate category totals across all months of this year
+    const catTotals = categories
+      .map(c => ({ ...c, val: yrMonths.reduce((s, m) => s + catTotal(c.name, m), 0) }))
+      .filter(x => x.val > 0)
+      .sort((a, b) => b.val - a.val);
+    const total = catTotals.reduce((s, x) => s + x.val, 0);
+    const maxV  = Math.max(...catTotals.map(x => x.val), 1);
+
+    html += `
+      <div class="card mb22">
+        <div class="card-header">
+          <span class="card-title" style="color:var(--accent)">${yr} — Category Summary</span>
+          <span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted)">${yrMonths.length} month${yrMonths.length===1?'':'s'} · Total: ${fmt(total)}</span>
+        </div>
+        <div class="card-body" style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+          <!-- KPI cards -->
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;align-content:start;">
+            ${catTotals.map(c => `
+              <div class="kpi" style="border-top:3px solid ${c.color};padding:12px 14px;">
+                <div class="kpi-label" style="font-size:8px">${c.name}</div>
+                <div class="kpi-value" style="font-size:18px">${fmt(c.val)}</div>
+                <div class="kpi-sub">${total ? ((c.val/total*100).toFixed(1)) : '0'}%</div>
+              </div>`).join('')}
+          </div>
+          <!-- Bar chart -->
+          <div style="display:flex;flex-direction:column;gap:6px;justify-content:center;">
+            ${catTotals.map(c => `
+              <div class="bar-row">
+                <div class="bar-lbl">${c.name.split('/')[0]}</div>
+                <div class="bar-track"><div class="bar-fill" style="width:${(c.val/maxV*100).toFixed(1)}%;background:${c.color}"></div></div>
+                <div class="bar-val">${fmt(c.val)}</div>
+              </div>`).join('')}
+          </div>
+        </div>
+        <!-- Month-by-month breakdown table for this year -->
+        <div style="margin-top:14px;border-top:1px solid var(--border);padding-top:12px;">
+          <div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--muted);letter-spacing:1.2px;text-transform:uppercase;margin-bottom:8px;">Month-by-month</div>
+          <div class="tbl-wrap"><table class="mo-table" style="font-size:12px;">
+            <thead><tr>
+              <th>Month</th>
+              ${catTotals.map(c=>`<th style="color:${c.color};font-size:10px">${c.name.split('/')[0]}</th>`).join('')}
+              <th>Total</th>
+            </tr></thead>
+            <tbody>
+              ${yrMonths.map(m => {
+                const mVals = catTotals.map(c => catTotal(c.name, m));
+                const mTotal = mVals.reduce((s,v)=>s+v, 0);
+                return `<tr>
+                  <td style="font-weight:600">${m.split(' ')[0]}</td>
+                  ${mVals.map(v=>`<td class="amount-mono" style="color:var(--muted)">${v?fmt(v):'—'}</td>`).join('')}
+                  <td class="amount-mono" style="font-weight:700">${mTotal?fmt(mTotal):'—'}</td>
+                </tr>`;
+              }).join('')}
+              <tr class="mo-year-total">
+                <td>TOTAL</td>
+                ${catTotals.map(c=>`<td class="amount-mono" style="font-weight:700">${fmt(c.val)}</td>`).join('')}
+                <td class="amount-mono" style="font-weight:700">${fmt(total)}</td>
+              </tr>
+            </tbody>
+          </table></div>
+        </div>
+      </div>`;
+  });
+  content.innerHTML = html || '<div class="empty">No data for selected period</div>';
 }
 function catSetMonth(m){ catSelectedMonth=m; renderCatView(); }
 
 /* ─── WEEKLY ─────────────────────────────────────── */
+let weeklyMode      = 'month'; // 'month' | 'year'
+let weeklyYearFilter = 'all';  // 'all' | '2025' | '2026' | ...
+
+function setWeeklyMode(mode) { weeklyMode = mode; renderWeekly(); }
+function setWeeklyYearFilter(yr) { weeklyYearFilter = yr; renderWeekly(); }
+
 function weekDateRange(monthStr, weekNum) {
   const { yr, mo } = parseMonthStr(monthStr);
   if (mo === -1) return '';
@@ -2461,26 +2868,157 @@ function weekDateRange(monthStr, weekNum) {
 }
 
 function renderWeekly() {
-  const usedM=MONTHS.filter(m=>entries.some(e=>e.month===m));
-  if(!usedM.includes(weekSelectedMonth)) weekSelectedMonth=usedM[0]||MONTHS[0];
-  document.getElementById('week-month-tabs').innerHTML=usedM.map(m=>`<div class="month-tab ${m===weekSelectedMonth?'active':''}" onclick="weekSetMonth('${m}')">${MONTHS_SHORT[MONTHS.indexOf(m)]||m}</div>`).join('');
+  const allUsedM = MONTHS.filter(m => entries.some(e => e.month === m));
+  const usedYears = [...new Set(allUsedM.map(m => m.split(' ')[1]))].sort();
 
-  // Dynamically compute week count for selected month
-  const { yr, mo } = parseMonthStr(weekSelectedMonth);
-  const weekRanges = getMonthWeekRanges(yr, mo);
-  const weeks = weekRanges.map((_,i) => 'Week'+(i+1));
+  /* ── year tabs ── */
+  const wkYearTabsEl = document.getElementById('wk-year-tabs');
+  if (wkYearTabsEl) {
+    wkYearTabsEl.innerHTML =
+      `<div class="month-tab ${weeklyYearFilter==='all'?'active':''}" onclick="setWeeklyYearFilter('all')">All Years</div>`
+      + usedYears.map(yr =>
+        `<div class="month-tab ${weeklyYearFilter===yr?'active':''}" onclick="setWeeklyYearFilter('${yr}')">${yr}</div>`
+      ).join('');
+  }
 
-  document.getElementById('week-exp-grid').innerHTML=weeks.map((w,i)=>{
-    const val=weekTotal('expense',weekSelectedMonth,w);
-    const range=weekDateRange(weekSelectedMonth, i+1);
-    const catBreak=categories.filter(isExpenseCat).map(c=>{ const v=entries.filter(e=>e.type==='expense'&&e.month===weekSelectedMonth&&e.week===w&&e.cat===c.name).reduce((s,e)=>s+e.amount,0); return v?`<div style="font-size:10px;color:var(--muted);margin-top:4px">${c.name.split('/')[0]}: ${fmt(v)}</div>`:''; }).join('');
-    return `<div class="week-cell"><div class="week-label">${w}</div><div style="font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;margin-bottom:4px;letter-spacing:0.3px">${range}</div><div class="week-exp">${val?fmt(val):'—'}</div>${catBreak}</div>`;
-  }).join('');
-  document.getElementById('week-earn-grid').innerHTML=weeks.map((w,i)=>{
-    const val=weekTotal('earning',weekSelectedMonth,w);
-    const range=weekDateRange(weekSelectedMonth, i+1);
-    return `<div class="week-cell"><div class="week-label">${w}</div><div style="font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;margin-bottom:4px;letter-spacing:0.3px">${range}</div><div class="week-earn">${val?fmt(val):'—'}</div></div>`;
-  }).join('');
+  /* ── mode button states ── */
+  ['month','year'].forEach(m => {
+    const btn = document.getElementById('wk-mode-'+m);
+    if (btn) btn.classList.toggle('mo-mode-active', weeklyMode === m);
+  });
+
+  /* ── panel visibility ── */
+  const pMonth = document.getElementById('wk-panel-month');
+  const pYear  = document.getElementById('wk-panel-year');
+  if (pMonth) pMonth.style.display = weeklyMode === 'month' ? '' : 'none';
+  if (pYear)  pYear.style.display  = weeklyMode === 'year'  ? '' : 'none';
+
+  /* ── filter months by year ── */
+  const filteredM = weeklyYearFilter === 'all'
+    ? allUsedM
+    : allUsedM.filter(m => m.split(' ')[1] === weeklyYearFilter);
+
+  /* ══════════════════
+     MONTH-WISE PANEL
+     ══════════════════ */
+  if (weeklyMode === 'month') {
+    if (!filteredM.includes(weekSelectedMonth)) weekSelectedMonth = filteredM[0] || MONTHS[0];
+
+    const monthTabsEl = document.getElementById('week-month-tabs');
+    if (monthTabsEl) {
+      monthTabsEl.innerHTML = filteredM.map(m =>
+        `<div class="month-tab ${m===weekSelectedMonth?'active':''}" onclick="weekSetMonth('${m}')">${MONTHS_SHORT[MONTHS.indexOf(m)] || m}</div>`
+      ).join('');
+    }
+
+    // Update titles
+    const expTitle  = document.getElementById('wk-exp-title');
+    const earnTitle = document.getElementById('wk-earn-title');
+    if (expTitle)  expTitle.textContent  = `Weekly Expense Breakdown — ${weekSelectedMonth}`;
+    if (earnTitle) earnTitle.textContent = `Weekly Earnings Breakdown — ${weekSelectedMonth}`;
+
+    const { yr, mo } = parseMonthStr(weekSelectedMonth);
+    const weekRanges = getMonthWeekRanges(yr, mo);
+    const weeks = weekRanges.map((_, i) => 'Week' + (i + 1));
+
+    const expGrid  = document.getElementById('week-exp-grid');
+    const earnGrid = document.getElementById('week-earn-grid');
+    if (expGrid) expGrid.innerHTML = weeks.map((w, i) => {
+      const val   = weekTotal('expense', weekSelectedMonth, w);
+      const range = weekDateRange(weekSelectedMonth, i + 1);
+      const catBreak = categories.filter(isExpenseCat).map(c => {
+        const v = entries.filter(e => e.type==='expense' && e.month===weekSelectedMonth && e.week===w && e.cat===c.name).reduce((s,e)=>s+e.amount, 0);
+        return v ? `<div style="font-size:10px;color:var(--muted);margin-top:4px">${c.name.split('/')[0]}: ${fmt(v)}</div>` : '';
+      }).join('');
+      return `<div class="week-cell"><div class="week-label">${w}</div><div style="font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;margin-bottom:4px;letter-spacing:0.3px">${range}</div><div class="week-exp">${val?fmt(val):'—'}</div>${catBreak}</div>`;
+    }).join('');
+
+    if (earnGrid) earnGrid.innerHTML = weeks.map((w, i) => {
+      const val   = weekTotal('earning', weekSelectedMonth, w);
+      const range = weekDateRange(weekSelectedMonth, i + 1);
+      return `<div class="week-cell"><div class="week-label">${w}</div><div style="font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;margin-bottom:4px;letter-spacing:0.3px">${range}</div><div class="week-earn">${val?fmt(val):'—'}</div></div>`;
+    }).join('');
+    return;
+  }
+
+  /* ══════════════════════════════════
+     YEAR-WISE PANEL — Month × Week matrix
+     ══════════════════════════════════ */
+  const yearsToShow = weeklyYearFilter === 'all' ? usedYears : [weeklyYearFilter];
+  const MAX_WEEKS = 5;
+  const wkCols = Array.from({length: MAX_WEEKS}, (_, i) => 'Week' + (i + 1));
+
+  // Titles
+  const yrExpTitle  = document.getElementById('wk-yr-exp-title');
+  const yrEarnTitle = document.getElementById('wk-yr-earn-title');
+  const yrLabel = weeklyYearFilter === 'all' ? 'All Years' : weeklyYearFilter;
+  if (yrExpTitle)  yrExpTitle.textContent  = `Year-wise Weekly Expenses — ${yrLabel}`;
+  if (yrEarnTitle) yrEarnTitle.textContent = `Year-wise Weekly Earnings — ${yrLabel}`;
+
+  function buildYearMatrix(type) {
+    if (!filteredM.length) return '<tr><td colspan="7" class="empty">No data</td></tr>';
+    let html = '';
+    let grandTotals = Array(MAX_WEEKS).fill(0);
+    let grandRowTotal = 0;
+
+    yearsToShow.forEach(yr => {
+      const yrMonths = filteredM.filter(m => m.split(' ')[1] === yr);
+      if (!yrMonths.length) return;
+
+      // year separator row
+      if (weeklyYearFilter === 'all') {
+        html += `<tr class="mo-year-hdr"><td colspan="7">── ${yr}</td></tr>`;
+      }
+
+      let yrColTotals = Array(MAX_WEEKS).fill(0);
+      let yrRowTotal = 0;
+
+      yrMonths.forEach(m => {
+        const { yr: myr, mo } = parseMonthStr(m);
+        const weekRanges = getMonthWeekRanges(myr, mo);
+        const rowTotal = wkCols.reduce((s, w) => s + weekTotal(type, m, w), 0);
+        yrRowTotal += rowTotal;
+        grandRowTotal += rowTotal;
+        const cells = wkCols.map((w, wi) => {
+          const v = weekTotal(type, m, w);
+          const hasWeek = wi < weekRanges.length;
+          yrColTotals[wi] += v;
+          grandTotals[wi] += v;
+          if (!hasWeek) return `<td class="amount-mono" style="color:var(--dim);font-size:11px">—</td>`;
+          return `<td class="amount-mono" style="font-size:12px;color:${type==='expense'?'var(--red)':'var(--green)'}">${v?fmt(v):'—'}</td>`;
+        }).join('');
+        html += `<tr>
+          <td style="font-weight:600;${weeklyYearFilter==='all'?'padding-left:20px':''}">${m.split(' ')[0]}</td>
+          ${cells}
+          <td class="amount-mono" style="font-weight:700;color:${type==='expense'?'var(--red)':'var(--green)'}">${rowTotal?fmt(rowTotal):'—'}</td>
+        </tr>`;
+      });
+
+      // year subtotal
+      if (weeklyYearFilter === 'all') {
+        html += `<tr class="mo-year-total">
+          <td>${yr} TOTAL</td>
+          ${yrColTotals.map(v=>`<td class="amount-mono" style="font-weight:700">${v?fmt(v):'—'}</td>`).join('')}
+          <td class="amount-mono" style="font-weight:700">${yrRowTotal?fmt(yrRowTotal):'—'}</td>
+        </tr>`;
+      }
+    });
+
+    // grand total row (only when showing all years)
+    if (weeklyYearFilter === 'all' && yearsToShow.length > 1) {
+      html += `<tr class="mo-year-total" style="border-top:2px solid var(--accent)">
+        <td style="color:var(--accent)">GRAND TOTAL</td>
+        ${grandTotals.map(v=>`<td class="amount-mono" style="font-weight:700;color:var(--accent)">${v?fmt(v):'—'}</td>`).join('')}
+        <td class="amount-mono" style="font-weight:700;color:var(--accent)">${grandRowTotal?fmt(grandRowTotal):'—'}</td>
+      </tr>`;
+    }
+    return html;
+  }
+
+  const expBody  = document.getElementById('wk-yr-exp-body');
+  const earnBody = document.getElementById('wk-yr-earn-body');
+  if (expBody)  expBody.innerHTML  = buildYearMatrix('expense');
+  if (earnBody) earnBody.innerHTML = buildYearMatrix('earning');
 }
 function weekSetMonth(m){ weekSelectedMonth=m; renderWeekly(); }
 
